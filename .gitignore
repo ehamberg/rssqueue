@@ -1,0 +1,5 @@
+*.sqlite3
+cabal-dev/
+config/client_session_key.aes
+dist/
+static/tmp/
