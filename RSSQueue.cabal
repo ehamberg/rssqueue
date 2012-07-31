@@ -54,7 +54,6 @@ library
                  , yesod-platform                >= 1.0        && < 1.1
                  , yesod                         >= 1.0        && < 1.1
                  , yesod-core                    >= 1.0        && < 1.1
-                 , yesod-auth                    >= 1.0        && < 1.1
                  , yesod-static                  >= 1.0        && < 1.1
                  , yesod-default                 >= 1.0        && < 1.1
                  , yesod-form                    >= 1.0        && < 1.1
