@@ -1,0 +1,20 @@
+Default: &defaults
+  database: RSSQueue.sqlite3
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: RSSQueue_test.sqlite3
+  <<: *defaults
+
+Staging:
+  database: RSSQueue_staging.sqlite3
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: RSSQueue_production.sqlite3
+  poolsize: 100
+  <<: *defaults
