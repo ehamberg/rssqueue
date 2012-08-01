@@ -13,6 +13,9 @@ import Import
 getFeedR :: FeedId -> Handler RepHtml
 getFeedR feedId = do
     feed <- runDB $ get404 feedId
+    urls <- runDB $ selectList [FeedItemFeedId ==. feedId] [LimitTo 3]
     defaultLayout $ do
         setTitle $ "My feed"
-        [whamlet| <h2>#{feedTitle feed} |]
+        [whamlet| <h2>#{feedTitle feed}
+                  <p>#{show urls}
+        |]

@@ -1,5 +1,6 @@
 Feed
     title Text
+    deriving Show
 
 FeedItem
     feedId    FeedId
@@ -7,6 +8,7 @@ FeedItem
     created   UTCTime
     ipAddress Int64
     UniqueFeedItem feedId uri
+    deriving Show
 
 
  -- By default this file is used in Model.hs (which is imported by Foundation.hs)
