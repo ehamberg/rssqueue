@@ -10,8 +10,9 @@ import Import
 -- The majority of the code you will write in Yesod lives in these handler
 -- functions. You can spread them across multiple files if you are so
 -- inclined, or create a single monolithic file.
-getFeedR :: Text -> Handler RepHtml
+getFeedR :: FeedId -> Handler RepHtml
 getFeedR feedId = do
+    feed <- runDB $ get404 feedId
     defaultLayout $ do
         setTitle $ "My feed"
-        [whamlet| <h2>Id is #{feedId} |]
+        [whamlet| <h2>#{feedTitle feed} |]

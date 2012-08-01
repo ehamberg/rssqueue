@@ -4,4 +4,4 @@
 /robots.txt RobotsR GET
 
 /             HomeR GET POST
-/feed/#Text FeedR GET
+/feed/#FeedId FeedR GET
