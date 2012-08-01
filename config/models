@@ -4,6 +4,7 @@ Feed
 
 FeedItem
     feedId    FeedId
+    title     Text
     uri       Text
     created   UTCTime
     ipAddress Int64

@@ -13,9 +13,12 @@ import Import
 getFeedR :: FeedId -> Handler RepHtml
 getFeedR feedId = do
     feed <- runDB $ get404 feedId
-    urls <- runDB $ selectList [FeedItemFeedId ==. feedId] [LimitTo 3]
+    items <- runDB $ selectList [FeedItemFeedId ==. feedId] [] >>= mapM (\(Entity _ v) -> return v)
     defaultLayout $ do
-        setTitle $ "My feed"
-        [whamlet| <h2>#{feedTitle feed}
-                  <p>#{show urls}
+        setTitle $ toHtml $ feedTitle feed
+        [whamlet|
+            <h2>#{feedTitle feed}
+            <ul>
+              $forall feed_item <- items
+                <li><a href="#{feedItemUri feed_item}">#{feedItemTitle feed_item}</a>
         |]
