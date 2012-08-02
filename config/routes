@@ -3,5 +3,6 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/             HomeR GET POST
-/feed/#FeedId FeedR GET
+/             HomeR GET
+/feed/#FeedId FeedR GET POST
+/new          NewR  GET

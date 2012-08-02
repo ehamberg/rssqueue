@@ -1,0 +1,13 @@
+<h2>#{feedTitle feed}
+<div style="width: 600px; height: 80px; border: 1px solid red;">
+    <form id="addFeedForm" action="" method="post">
+        <div class="add_fields">
+            Title: <input type="text" id=#{titleFieldId} name="new_title" />
+            <br />
+            URL: <input type="text" id=#{urlFieldId} name="new_url" />
+        <div class="add_button">
+            <input type="submit" id=#{addButtonId} value"Add">
+
+<div id="container">
+    $forall feed_item <- items
+        <div class="feed_item"><a href="#{feedItemUri feed_item}">#{feedItemTitle feed_item}</a>

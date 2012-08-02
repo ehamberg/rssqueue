@@ -30,6 +30,7 @@ library
                      Settings.Development
                      Handler.Home
                      Handler.Feed
+                     Handler.New
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
@@ -58,6 +59,7 @@ library
                  , yesod-default                 >= 1.0        && < 1.1
                  , yesod-form                    >= 1.0        && < 1.1
                  , yesod-test                    >= 0.2        && < 0.3
+                 , yesod-json                    >= 1.0        && < 1.1
                  , clientsession                 >= 0.7.3      && < 0.8
                  , bytestring                    >= 0.9        && < 0.10
                  , text                          >= 0.11       && < 0.12
@@ -76,6 +78,8 @@ library
                  , directory                     >= 1.1        && < 1.2
                  , warp                          >= 1.2        && < 1.3
                  , time                          >= 1.4        && < 1.5
+                 , wai                           >= 1.2        && < 1.3
+                 , network                       >= 2.3        && < 2.4
 
 executable         RSSQueue
     if flag(library-only)

@@ -2,23 +2,36 @@
 module Handler.Feed where
 
 import Import
+import Data.Time.Clock (getCurrentTime)
+import Network.Wai (remoteHost)
+import Network.Socket (SockAddr (..))
+import Data.Text (pack)
+import Data.Maybe (fromMaybe)
 
--- This is a handler function for the GET request method on the FeedR
--- resource pattern. All of your resource patterns are defined in
--- config/routes
---
--- The majority of the code you will write in Yesod lives in these handler
--- functions. You can spread them across multiple files if you are so
--- inclined, or create a single monolithic file.
 getFeedR :: FeedId -> Handler RepHtml
 getFeedR feedId = do
     feed <- runDB $ get404 feedId
-    items <- runDB $ selectList [FeedItemFeedId ==. feedId] [] >>= mapM (\(Entity _ v) -> return v)
+    items <- runDB $ selectList [FeedItemFeedId ==. feedId] [Desc FeedItemCreated]
+                    >>= mapM (\(Entity _ v) -> return v)
     defaultLayout $ do
+        addScriptRemote "http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"
+        addButtonId <- lift newIdent
+        titleFieldId <- lift newIdent
+        urlFieldId <- lift newIdent
         setTitle $ toHtml $ feedTitle feed
-        [whamlet|
-            <h2>#{feedTitle feed}
-            <ul>
-              $forall feed_item <- items
-                <li><a href="#{feedItemUri feed_item}">#{feedItemTitle feed_item}</a>
-        |]
+        $(widgetFile "feed")
+
+getIpAddr :: SockAddr -> Text
+getIpAddr (SockAddrInet   _ addr)     = (pack . show) addr
+getIpAddr (SockAddrInet6 _ _ addr _ ) = (pack . show) addr
+getIpAddr _                           = pack ""
+
+postFeedR :: FeedId -> Handler RepJson
+postFeedR feedId = do
+    title <- fmap (fromMaybe "") $ lookupPostParam "new_title"
+    url   <- fmap (fromMaybe "") $ lookupPostParam "new_url"
+    time <- liftIO getCurrentTime
+    ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
+
+    _ <- runDB $ insert $ FeedItem feedId title url time ip
+    jsonToRepJson $ String "success"

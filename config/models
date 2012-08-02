@@ -7,7 +7,7 @@ FeedItem
     title     Text
     uri       Text
     created   UTCTime
-    ipAddress Int64
+    ipAddress Text
     UniqueFeedItem feedId uri
     deriving Show
 

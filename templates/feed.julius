@@ -1,0 +1,18 @@
+$(document).ready(function() {
+    $('#addFeedForm').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: '/feed/1',
+            data: $('#addFeedForm').serialize(),
+            success: function(data, textStatus, jqXHR) {
+                $('<div class="feed_item">' + $("##{titleFieldId}").val() + '</div>').hide().prependTo('#container').slideDown("slow");
+                $("##{titleFieldId}").val('')
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                       alert('error');
+                   }
+        });
+
+        return false;
+    });
+});

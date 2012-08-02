@@ -16,6 +16,7 @@ import Yesod.Static
 import Yesod.Default.Config
 import Yesod.Default.Util (addStaticContentExternal)
 import Yesod.Logger (Logger, logMsg, formatLogText)
+import Yesod.Form.Jquery (YesodJquery)
 import Network.HTTP.Conduit (Manager)
 import qualified Settings
 import qualified Database.Persist.Store
@@ -120,6 +121,8 @@ instance YesodPersist App where
             (persistConfig master)
             f
             (connPool master)
+
+instance YesodJquery App
 
 -- This instance is required to use forms. You can modify renderMessage to
 -- achieve customized and internationalized form validation messages.

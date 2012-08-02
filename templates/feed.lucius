@@ -1,0 +1,17 @@
+div.feed_item {
+    clear: both;
+    border: 1px solid black;
+    height: 30px;
+}
+
+div.add_fields {
+    float: left;
+    height: 30px;
+    width: 500px;
+}
+
+##{addButtonId} {
+    float: right;
+    height: 60px;
+    width: 80px;
+}
