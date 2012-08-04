@@ -1,13 +1,14 @@
 Feed
-    title Text
+    title      Text
+    identifier Text
     deriving Show
 
 FeedItem
-    feedId    FeedId
-    title     Text
-    uri       Text
-    created   UTCTime
-    ipAddress Text
+    feedId     FeedId
+    title      Text
+    uri        Text
+    created    UTCTime
+    ipAddress  Text
     UniqueFeedItem feedId uri
     deriving Show
 
