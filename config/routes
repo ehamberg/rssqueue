@@ -5,4 +5,4 @@
 
 /             HomeR GET
 /feed/#Text   FeedR GET POST
-/new          NewR  GET
+/new          NewR  GET POST
