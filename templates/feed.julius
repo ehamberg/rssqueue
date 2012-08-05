@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#addFeedForm').submit(function() {
         $.ajax({
             type: 'POST',
-            url: '/feed/1',
+            url: '/feed/#{identifier}',
             data: $('#addFeedForm').serialize(),
             success: function(data, textStatus, jqXHR) {
                 $('<div class="feed_item">' + $("##{titleFieldId}").val() + '</div>').hide().prependTo('#container').slideDown("slow");

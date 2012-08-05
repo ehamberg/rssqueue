@@ -1,6 +1,7 @@
 Feed
-    title      Text
-    identifier Text
+    identifier       Text
+    title            Text
+    UniqueIdentifier identifier
     deriving Show
 
 FeedItem
