@@ -6,7 +6,7 @@ import Data.Time.Clock (getCurrentTime)
 import Network.Wai (remoteHost)
 import Data.Maybe (fromMaybe)
 
-getFeedR :: Text -> Handler RepHtml
+getFeedR :: Identifier -> Handler RepHtml
 getFeedR identifier = do
     Entity key feed <- runDB $ getBy404 $ UniqueIdentifier identifier
     liftIO $ print (Entity key feed)
@@ -20,7 +20,7 @@ getFeedR identifier = do
         setTitle $ toHtml $ feedTitle feed
         $(widgetFile "feed")
 
-postFeedR :: Text -> Handler RepJson
+postFeedR :: Identifier -> Handler RepJson
 postFeedR identifier = do
     Just (Entity key _) <- runDB $ getBy $ UniqueIdentifier identifier
 

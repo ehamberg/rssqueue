@@ -1,5 +1,5 @@
 Feed
-    identifier       Text
+    identifier       Identifier
     title            Text
     UniqueIdentifier identifier
     deriving Show

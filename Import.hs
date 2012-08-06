@@ -32,9 +32,9 @@ getIpAddr (SockAddrInet   _ addr)     = (pack . show) addr
 getIpAddr (SockAddrInet6 _ _ addr _ ) = (pack . show) addr
 getIpAddr _                           = pack ""
 
-createIdentifier :: Int -> IO Text
+createIdentifier :: Int -> IO Identifier
 createIdentifier len = do
     g <- getStdGen
     let str = take len . filter isAlphaNum . map chr $ randomRs (ord '0', ord 'z') g
-    return $ pack str
+    return $ Identifier $ pack str
 
