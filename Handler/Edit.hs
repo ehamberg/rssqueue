@@ -14,15 +14,15 @@ instance ToJavascript Identifier where
 
 getEditR :: Identifier -> Handler RepHtml
 getEditR identifier = do
-    Entity key feed <- runDB $ getBy404 $ UniqueIdentifier identifier
+    Entity key queue <- runDB $ getBy404 $ UniqueIdentifier identifier
 
-    items <- runDB $ selectList [FeedItemFeedId ==. key] [Desc FeedItemCreated] >>= mapM (\(Entity _ v) -> return v)
+    items <- runDB $ selectList [QueueItemQueueId ==. key] [Desc QueueItemCreated] >>= mapM (\(Entity _ v) -> return v)
     defaultLayout $ do
         addScriptRemote "http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"
         addButtonId <- lift newIdent
         titleFieldId <- lift newIdent
         urlFieldId <- lift newIdent
-        setTitle $ toHtml $ feedTitle feed
+        setTitle $ toHtml $ queueTitle queue
         $(widgetFile "edit")
 
 postEditR :: Identifier -> Handler RepJson
@@ -34,5 +34,5 @@ postEditR identifier = do
     time <- liftIO getCurrentTime
     ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
 
-    _ <- runDB $ insert $ FeedItem key title url time ip
+    _ <- runDB $ insert $ QueueItem key title url time ip
     jsonToRepJson $ String "success"

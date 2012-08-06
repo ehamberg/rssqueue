@@ -1,17 +1,14 @@
-Feed
+Queue
     identifier       Identifier
     title            Text
     UniqueIdentifier identifier
     deriving Show
 
-FeedItem
-    feedId     FeedId
+QueueItem
+    queueId    QueueId
     title      Text
     uri        Text
     created    UTCTime
     ipAddress  Text
-    UniqueFeedItem feedId uri
+    UniqueQueueItem queueId uri
     deriving Show
-
-
- -- By default this file is used in Model.hs (which is imported by Foundation.hs)

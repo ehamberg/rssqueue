@@ -1,4 +1,4 @@
-div.feed_item {
+div.queue_item {
     clear: both;
     border: 1px solid black;
     height: 30px;

@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    $('#addFeedForm').submit(function() {
+    $('#addQueueForm').submit(function() {
         $.ajax({
             type: 'POST',
             url: '/edit/#{identifier}',
-            data: $('#addFeedForm').serialize(),
+            data: $('#addQueueForm').serialize(),
             success: function(data, textStatus, jqXHR) {
-                $('<div class="feed_item">' + $("##{titleFieldId}").val() + '</div>').hide().prependTo('#container').slideDown("slow");
+                $('<div class="queue_item">' + $("##{titleFieldId}").val() + '</div>').hide().prependTo('#container').slideDown("slow");
                 $("##{titleFieldId}").val('')
             },
             error: function(jqXHR, textStatus, errorThrown) {

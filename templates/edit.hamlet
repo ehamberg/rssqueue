@@ -1,6 +1,6 @@
-<h2>#{feedTitle feed}
+<h2>#{queueTitle queue}
 <div style="width: 600px; height: 80px; border: 1px solid red;">
-    <form id="addFeedForm" action="" method="post">
+    <form id="addqueueForm" action="" method="post">
         <div class="add_fields">
             Title: <input type="text" id=#{titleFieldId} name="new_title" />
             <br />
@@ -9,5 +9,5 @@
             <input type="submit" id=#{addButtonId} value"Add">
 
 <div id="container">
-    $forall feed_item <- items
-        <div class="feed_item"><a href="#{feedItemUri feed_item}">#{feedItemTitle feed_item}</a>
+    $forall queue_item <- items
+        <div class="queue_item"><a href="#{queueItemUri queue_item}">#{queueItemTitle queue_item}</a>
