@@ -15,7 +15,6 @@ instance ToJavascript Identifier where
 getEditR :: Identifier -> Handler RepHtml
 getEditR identifier = do
     Entity key feed <- runDB $ getBy404 $ UniqueIdentifier identifier
-    liftIO $ print (Entity key feed)
 
     items <- runDB $ selectList [FeedItemFeedId ==. key] [Desc FeedItemCreated] >>= mapM (\(Entity _ v) -> return v)
     defaultLayout $ do
