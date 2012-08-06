@@ -29,7 +29,7 @@ library
                      Settings.StaticFiles
                      Settings.Development
                      Handler.Home
-                     Handler.Feed
+                     Handler.Edit
                      Handler.New
 
     if flag(dev) || flag(library-only)

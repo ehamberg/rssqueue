@@ -29,6 +29,6 @@ postNewR = do
             ident <- liftIO $ createIdentifier 6
             -- insert into database and redirect to feed page
             _ <- runDB $ insert $ Feed ident title
-            redirect (FeedR ident)
+            redirect (EditR ident)
          -- on errors, simply redirect to “new”
          _ -> redirect (NewR)

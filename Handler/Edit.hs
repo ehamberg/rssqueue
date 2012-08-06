@@ -1,7 +1,7 @@
 {-# LANGUAGE TupleSections, OverloadedStrings #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
-module Handler.Feed where
+module Handler.Edit where
 
 import Import
 import Data.Time.Clock (getCurrentTime)
@@ -12,8 +12,8 @@ import Text.Julius (ToJavascript, toJavascript)
 instance ToJavascript Identifier where
     toJavascript (Identifier t) = toJavascript t
 
-getFeedR :: Identifier -> Handler RepHtml
-getFeedR identifier = do
+getEditR :: Identifier -> Handler RepHtml
+getEditR identifier = do
     Entity key feed <- runDB $ getBy404 $ UniqueIdentifier identifier
     liftIO $ print (Entity key feed)
 
@@ -24,10 +24,10 @@ getFeedR identifier = do
         titleFieldId <- lift newIdent
         urlFieldId <- lift newIdent
         setTitle $ toHtml $ feedTitle feed
-        $(widgetFile "feed")
+        $(widgetFile "edit")
 
-postFeedR :: Identifier -> Handler RepJson
-postFeedR identifier = do
+postEditR :: Identifier -> Handler RepJson
+postEditR identifier = do
     Just (Entity key _) <- runDB $ getBy $ UniqueIdentifier identifier
 
     title <- fmap (fromMaybe "") $ lookupPostParam "new_title"

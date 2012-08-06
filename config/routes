@@ -4,5 +4,5 @@
 /robots.txt RobotsR GET
 
 /                   HomeR GET
-/feed/#Identifier   FeedR GET POST
+/edit/#Identifier   EditR GET POST
 /new                NewR  GET POST
