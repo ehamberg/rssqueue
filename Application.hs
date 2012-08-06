@@ -25,7 +25,7 @@ import Handler.New
 -- This line actually creates our YesodSite instance. It is the second half
 -- of the call to mkYesodData which occurs in Foundation.hs. Please see
 -- the comments there for more details.
-mkYesodDispatch "App" resourcesApp
+mkYesodDispatch "RSSQueueApp" resourcesRSSQueueApp
 
 -- This function allocates resources (such as a database connection pool),
 -- performs initialization and creates a WAI application. This is also the
@@ -41,7 +41,7 @@ makeApplication conf logger = do
     logWare   = if development then logCallbackDev (logBS setLogger)
                                else logCallback    (logBS setLogger)
 
-makeFoundation :: AppConfig DefaultEnv Extra -> Logger -> IO App
+makeFoundation :: AppConfig DefaultEnv Extra -> Logger -> IO RSSQueueApp
 makeFoundation conf setLogger = do
     manager <- newManager def
     s <- staticSite
@@ -50,7 +50,7 @@ makeFoundation conf setLogger = do
               Database.Persist.Store.applyEnv
     p <- Database.Persist.Store.createPoolConfig (dbconf :: Settings.PersistConfig)
     Database.Persist.Store.runPool dbconf (runMigration migrateAll) p
-    return $ App conf setLogger s p manager dbconf
+    return $ RSSQueueApp conf setLogger s p manager dbconf
 
 -- for yesod devel
 getApplicationDev :: IO (Int, Application)

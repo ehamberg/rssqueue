@@ -1,8 +1,8 @@
 module Foundation
-    ( App (..)
+    ( RSSQueueApp (..)
     , Route (..)
-    , AppMessage (..)
-    , resourcesApp
+    , RSSQueueAppMessage (..)
+    , resourcesRSSQueueApp
     , Handler
     , Widget
     , Form
@@ -32,7 +32,7 @@ import Text.Hamlet (hamletFile)
 -- keep settings and values requiring initialization before your application
 -- starts running, such as database connections. Every handler will have
 -- access to the data present here.
-data App = App
+data RSSQueueApp = RSSQueueApp
     { settings :: AppConfig DefaultEnv Extra
     , getLogger :: Logger
     , getStatic :: Static -- ^ Settings for static file serving.
@@ -42,7 +42,7 @@ data App = App
     }
 
 -- Set up i18n messages. See the message folder.
-mkMessage "App" "messages" "en"
+mkMessage "RSSQueueApp" "messages" "en"
 
 -- This is where we define all of the routes in our application. For a full
 -- explanation of the syntax, please see:
@@ -53,23 +53,23 @@ mkMessage "App" "messages" "en"
 -- * Creates the route datatype AppRoute. Every valid URL in your
 --   application can be represented as a value of this type.
 -- * Creates the associated type:
---       type instance Route App = AppRoute
+--       type instance Route RSSQueueApp = AppRoute
 -- * Creates the value resourcesApp which contains information on the
 --   resources declared below. This is used in Handler.hs by the call to
 --   mkYesodDispatch
 --
 -- What this function does *not* do is create a YesodSite instance for
--- App. Creating that instance requires all of the handler functions
+-- RSSQueueApp. Creating that instance requires all of the handler functions
 -- for our application to be in scope. However, the handler functions
 -- usually require access to the AppRoute datatype. Therefore, we
 -- split these actions into two functions and place them in separate files.
-mkYesodData "App" $(parseRoutesFile "config/routes")
+mkYesodData "RSSQueueApp" $(parseRoutesFile "config/routes")
 
-type Form x = Html -> MForm App App (FormResult x, Widget)
+type Form x = Html -> MForm RSSQueueApp RSSQueueApp (FormResult x, Widget)
 
 -- Please see the documentation for the Yesod typeclass. There are a number
 -- of settings which can be configured by overriding methods here.
-instance Yesod App where
+instance Yesod RSSQueueApp where
     approot = ApprootMaster $ appRoot . settings
 
     -- Store session data on the client in encrypted cookies,
@@ -113,8 +113,8 @@ instance Yesod App where
     jsLoader _ = BottomOfBody
 
 -- How to run database actions.
-instance YesodPersist App where
-    type YesodPersistBackend App = SqlPersist
+instance YesodPersist RSSQueueApp where
+    type YesodPersistBackend RSSQueueApp = SqlPersist
     runDB f = do
         master <- getYesod
         Database.Persist.Store.runPool
@@ -122,11 +122,11 @@ instance YesodPersist App where
             f
             (connPool master)
 
-instance YesodJquery App
+instance YesodJquery RSSQueueApp
 
 -- This instance is required to use forms. You can modify renderMessage to
 -- achieve customized and internationalized form validation messages.
-instance RenderMessage App FormMessage where
+instance RenderMessage RSSQueueApp FormMessage where
     renderMessage _ _ = defaultFormMessage
 
 -- Note: previous versions of the scaffolding included a deliver function to

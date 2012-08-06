@@ -5,7 +5,7 @@ import Import
 
 newtype NewQueueTitle = NewQueueTitle Text deriving Show
 
-feedTitleForm :: Html -> MForm App App (FormResult NewQueueTitle, Widget)
+feedTitleForm :: Html -> MForm RSSQueueApp RSSQueueApp (FormResult NewQueueTitle, Widget)
 feedTitleForm = renderDivs $ NewQueueTitle
     <$> areq textField "Name" Nothing
 
