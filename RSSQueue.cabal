@@ -31,6 +31,7 @@ library
                      Handler.Home
                      Handler.Edit
                      Handler.New
+                     Handler.Get
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT

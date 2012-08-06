@@ -6,3 +6,4 @@
 /                   HomeR GET
 /edit/#Identifier   EditR GET POST
 /new                NewR  GET POST
+/get/#Text          GetR  GET
