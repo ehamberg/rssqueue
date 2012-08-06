@@ -1,10 +1,16 @@
 {-# LANGUAGE TupleSections, OverloadedStrings #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
+
 module Handler.Feed where
 
 import Import
 import Data.Time.Clock (getCurrentTime)
 import Network.Wai (remoteHost)
 import Data.Maybe (fromMaybe)
+import Text.Julius (ToJavascript, toJavascript)
+
+instance ToJavascript Identifier where
+    toJavascript (Identifier t) = toJavascript t
 
 getFeedR :: Identifier -> Handler RepHtml
 getFeedR identifier = do
