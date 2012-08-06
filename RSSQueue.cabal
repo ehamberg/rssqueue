@@ -29,8 +29,9 @@ library
                      Settings.StaticFiles
                      Settings.Development
                      Handler.Home
-                     Handler.Edit
                      Handler.New
+                     Handler.Edit
+                     Handler.Feed
                      Handler.Get
 
     if flag(dev) || flag(library-only)
@@ -61,6 +62,7 @@ library
                  , yesod-form                    >= 1.0        && < 1.1
                  , yesod-test                    >= 0.2        && < 0.3
                  , yesod-json                    >= 1.0        && < 1.1
+                 , yesod-newsfeed                >= 1.0        && < 1.1
                  , clientsession                 >= 0.7.3      && < 0.8
                  , bytestring                    >= 0.9        && < 0.10
                  , text                          >= 0.11       && < 0.12
