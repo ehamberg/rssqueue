@@ -21,18 +21,19 @@ getFeedR identifier = do
 
     time <- liftIO getCurrentTime
 
-    newsFeed $ Feed { feedTitle = queueTitle queue
-                    , feedLinkSelf = FeedR identifier
-                    , feedLinkHome = HomeR
-                    , feedDescription = ""
-                    , feedLanguage = "en"
-                    , feedUpdated = fromMaybe time lastItemTime
-                    , feedEntries = is
-                    }
+    newsFeed Feed { feedTitle = queueTitle queue
+                  , feedAuthor = ""
+                  , feedLinkSelf = FeedR identifier
+                  , feedLinkHome = HomeR
+                  , feedDescription = ""
+                  , feedLanguage = "en"
+                  , feedUpdated = fromMaybe time lastItemTime
+                  , feedEntries = is
+                  }
 
 toFeedEntry :: QueueItem -> Handler (FeedEntry (Route RSSQueueApp))
-toFeedEntry item = do
-  return FeedEntry { feedEntryLink    = GetR $ queueItemUri item
+toFeedEntry item = return FeedEntry
+                   { feedEntryLink    = GetR $ queueItemUri item
                    , feedEntryUpdated = queueItemCreated item
                    , feedEntryTitle   = queueItemTitle item
                    , feedEntryContent = ""

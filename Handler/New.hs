@@ -31,4 +31,4 @@ postNewR = do
             _ <- runDB $ insert $ Queue ident title
             redirect (EditR ident)
          -- on errors, simply redirect to “new”
-         _ -> redirect (NewR)
+         _ -> redirect NewR
