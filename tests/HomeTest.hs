@@ -1,9 +1,9 @@
+{-# LANGUAGE OverloadedStrings #-}
 module HomeTest
     ( homeSpecs
     ) where
 
-import Import
-import Yesod.Test
+import TestImport
 
 homeSpecs :: Specs
 homeSpecs =
