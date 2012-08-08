@@ -13,5 +13,5 @@ import Import
 getHomeR :: Handler RepHtml
 getHomeR = defaultLayout $ do
              aDomId <- lift newIdent
-             setTitle "Welcome To Yesod!"
+             setTitle "RSS Queue"
              $(widgetFile "homepage")
