@@ -1,12 +1,10 @@
 <h2>#{queueTitle queue}
 <div style="width: 600px; height: 80px; border: 1px solid red;">
-    <form id="addqueueForm" action="" method="post">
+    <form id="addQueueForm" method="post" enctype=#{enctype}>
         <div class="add_fields">
-            Title: <input type="text" id=#{titleFieldId} name="new_title" />
-            <br />
-            URL: <input type="text" id=#{urlFieldId} name="new_url" />
-        <div class="add_button">
-            <input type="submit" id=#{addButtonId} value"Add">
+            ^{widget}
+        <div class="add_buttons">
+            <input type=submit>
 
 <div id="container">
     $forall queue_item <- items
