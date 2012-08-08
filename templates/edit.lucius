@@ -2,16 +2,16 @@ div.queue_item {
     clear: both;
     border: 1px solid black;
     height: 30px;
+    width: 600px;
 }
 
-div.add_fields {
-    float: left;
-    height: 30px;
-    width: 500px;
+span.item_title {
+    font-size: 20px;
+    width: 400px;
 }
 
-##{addButtonId} {
-    float: right;
-    height: 60px;
-    width: 80px;
+span.item_url {
+    font-size: 20px;
+    color: #ccc;
+    width: 190px;
 }
