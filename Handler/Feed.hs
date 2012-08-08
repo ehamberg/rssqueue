@@ -22,10 +22,10 @@ getFeedR identifier = do
     time <- liftIO getCurrentTime
 
     newsFeed Feed { feedTitle = queueTitle queue
-                  , feedAuthor = ""
+                  , feedAuthor = "RSSQueue.com"
                   , feedLinkSelf = FeedR identifier
                   , feedLinkHome = HomeR
-                  , feedDescription = ""
+                  , feedDescription = "Feed from RSSQueue.com"
                   , feedLanguage = "en"
                   , feedUpdated = fromMaybe time lastItemTime
                   , feedEntries = is
