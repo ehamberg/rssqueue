@@ -3,10 +3,10 @@
     ^{widget}
     <input type=submit value="Add">
 
-<div id="container">
+<ol id="feed_list">
     $forall queue_item <- items
-        <div class="queue_item">
+        <li class="queue_item">
             <span class="item_title">
-                “#{queueItemTitle queue_item}”
+                #{queueItemTitle queue_item}
             <span class="item_url">
-                (#{queueItemUri queue_item})
+                #{queueItemUri queue_item}

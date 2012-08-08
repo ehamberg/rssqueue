@@ -1,18 +1,33 @@
 $(document).ready(function() {
-    $('#addQueueForm').submit(function() {
-        $.ajax({
-            type: 'POST',
-            url: '/edit/#{identifier}',
-            data: $('#addQueueForm').serialize(),
-            success: function(data, textStatus, jqXHR) {
-                $('<div class="queue_item">' + $("##{titleFieldId}").val() + '</div>').hide().prependTo('#container').slideDown("slow");
-                $("##{titleFieldId}").val('')
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                       alert('error');
-                   }
-        });
+  $('#addQueueForm').submit(function() {
+    $.ajax({
+      type: 'POST',
+      url: '/edit/#{identifier}',
+      data: $('#addQueueForm').serialize(),
+      success: function(response) {
+                 if (response == "success") {
+                   var url = $("#item_url").val();
 
-        return false;
+                   if (!RegExp(/^https?:\/\//).test(url)) {
+                     url = "http://" + url;
+                   }
+
+                   $('<li>'
+                    +'<span class="item_title">'+$("#item_title").val()+'</span> '
+                    +'<span class="item_url">'+url+'</span>'
+                    +'</li>')
+                    .hide().prependTo('#feed_list').slideDown("slow");
+                   $("#item_title").val('');
+                   $("#item_url").val('');
+                 } else {
+                   alert(response);
+                 }
+               },
+      error: function(jqXHR, textStatus, errorThrown) {
+               alert('error');
+             }
     });
+
+    return false;
+  });
 });

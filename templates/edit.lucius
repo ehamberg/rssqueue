@@ -1,6 +1,5 @@
 div.queue_item {
     clear: both;
-    border: 1px solid black;
     height: 30px;
     width: 600px;
 }
@@ -10,8 +9,20 @@ span.item_title {
     width: 400px;
 }
 
+span.item_title:before {
+    content: "“";
+}
+
+span.item_title:after {
+    content: "”";
+}
+
 span.item_url {
     font-size: 20px;
-    color: #ccc;
+    color: #aaa;
     width: 190px;
+}
+
+#feed_list {
+    margin-top: 1em;
 }
