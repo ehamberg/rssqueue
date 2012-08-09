@@ -16,6 +16,7 @@ import Yesod
 import Yesod.Static
 import Yesod.Default.Config
 import Yesod.Default.Util (addStaticContentExternal)
+import Yesod.Form.Jquery (YesodJquery)
 import Network.HTTP.Conduit (Manager)
 import qualified Settings
 import qualified Database.Persist.Store
@@ -42,6 +43,8 @@ data RSSQueueApp = RSSQueueApp
 
 -- Set up i18n messages. See the message folder.
 mkMessage "RSSQueueApp" "messages" "en"
+
+instance YesodJquery RSSQueueApp
 
 -- This is where we define all of the routes in our application. For a full
 -- explanation of the syntax, please see:

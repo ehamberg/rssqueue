@@ -4,6 +4,7 @@
 module Handler.Edit where
 
 import Import hiding (length)
+import Yesod.Form.Jquery (urlJqueryJs)
 import Data.Time.Clock (getCurrentTime)
 import Network.Wai (remoteHost)
 import Text.Julius (ToJavascript, toJavascript)
@@ -34,7 +35,7 @@ getEditR identifier = do
     (widget, enctype) <- generateFormPost addItemForm
 
     defaultLayout $ do
-        addScriptRemote "http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"
+        lift getYesod >>= (addScriptEither . urlJqueryJs)
         addButtonId <- lift newIdent
         titleFieldId <- lift newIdent
         urlFieldId <- lift newIdent
