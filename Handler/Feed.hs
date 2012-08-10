@@ -3,12 +3,12 @@
 module Handler.Feed where
 
 import Import
-import Yesod.Feed
+import PodcastFeed
 import Data.Time.Clock (getCurrentTime)
 import Data.Maybe (fromMaybe)
 import Data.List (head)
 
-getFeedR :: Identifier -> Handler RepAtomRss
+getFeedR :: Identifier -> Handler RepPodcast
 getFeedR identifier = do
     Entity key queue <- runDB $ getBy404 $ UniqueIdentifier identifier
 
@@ -21,15 +21,15 @@ getFeedR identifier = do
 
     time <- liftIO getCurrentTime
 
-    newsFeed Feed { feedTitle = queueTitle queue
-                  , feedAuthor = "RSSQueue.com"
-                  , feedLinkSelf = FeedR identifier
-                  , feedLinkHome = HomeR
-                  , feedDescription = "Feed from RSSQueue.com"
-                  , feedLanguage = "en"
-                  , feedUpdated = fromMaybe time lastItemTime
-                  , feedEntries = is
-                  }
+    podcastFeed Feed { feedTitle = queueTitle queue
+                     , feedAuthor = "RSSQueue.com"
+                     , feedLinkSelf = FeedR identifier
+                     , feedLinkHome = HomeR
+                     , feedDescription = "Feed from RSSQueue.com"
+                     , feedLanguage = "en"
+                     , feedUpdated = fromMaybe time lastItemTime
+                     , feedEntries = is
+                     }
 
 toFeedEntry :: QueueItem -> Handler (FeedEntry (Route RSSQueueApp))
 toFeedEntry item = return FeedEntry
