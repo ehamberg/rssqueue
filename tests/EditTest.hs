@@ -1,15 +1,15 @@
 {-# LANGUAGE OverloadedStrings #-}
-module HomeTest
-    ( homeSpecs
+module EditTest
+    ( editSpecs
     ) where
 
 import TestImport
 
-homeSpecs :: Specs
-homeSpecs =
-  describe "These are some example tests" $
-    it "loads the index and checks it looks right" $ do
-      get_ "/"
+editSpecs :: Specs
+editSpecs =
+  describe "This is a feed editing test" $
+    it "it loads the example queue and make sure it can add items" $ do
+      get_ "/edit/xxxxx"
       statusIs 200
       --htmlAllContain "h1" "Hello"
 

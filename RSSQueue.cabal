@@ -114,5 +114,6 @@ test-suite test
                  , yesod-test
                  , yesod-default
                  , yesod-core
-                 , persistent                    >= 1.0        && < 1.1
+                 , persistent            >= 1.0        && < 1.1
                  , persistent-sqlite     >= 1.0        && < 1.1
+                 , conduit               >= 0.5        && < 0.6
