@@ -5,9 +5,7 @@ module FeedTypes
     ) where
 
 import Import
-import Text.Hamlet      (Html)
 import Data.Time.Clock  (UTCTime)
-import Data.Text        (Text)
 import Data.Int         (Int64)
 
 -- | The overall feed
@@ -20,20 +18,20 @@ data Feed url = Feed
     , feedLanguage    :: Text
     , feedImage       :: url
     , feedUpdated     :: UTCTime
-    , feedEntries     :: [FeedEntry url]
+    , feedEntries     :: [FeedEntry]
     }
 
 -- | Each feed entry
-data FeedEntry url = FeedEntry
-    { feedEntryLink      :: url
+data FeedEntry = FeedEntry
+    { feedEntryLink      :: Text
     , feedEntryUpdated   :: UTCTime
     , feedEntryTitle     :: Text
     , feedEntryContent   :: Html
-    , feedEntryEnclosure :: Maybe (FeedEnclosure url)
+    , feedEntryEnclosure :: Maybe FeedEnclosure
     }
 
-data FeedEnclosure url = FeedEnclosure
-    { feedEnclosureUrl    :: url
+data FeedEnclosure = FeedEnclosure
+    { feedEnclosureUrl    :: Text
     , feedEnclosureLength :: Int64
     , feedEnclosureType   :: Text
     }

@@ -7,4 +7,3 @@
 /new                NewR  GET POST
 /edit/#Identifier   EditR GET POST
 /feed/#Identifier   FeedR GET
-/get/#Text          GetR  GET

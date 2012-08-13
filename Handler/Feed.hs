@@ -32,16 +32,16 @@ getFeedR identifier = do
                      , feedEntries = is
                      }
 
-toFeedEntry :: QueueItem -> Handler (FeedEntry (Route RSSQueueApp))
+toFeedEntry :: QueueItem -> Handler FeedEntry
 toFeedEntry item = return FeedEntry
-                   { feedEntryLink      = GetR $ queueItemUri item
+                   { feedEntryLink      = queueItemUri item
                    , feedEntryUpdated   = queueItemCreated item
                    , feedEntryTitle     = queueItemTitle item
                    , feedEntryContent   = ""
                    , feedEntryEnclosure = Just enclosure
                    }
               where enclosure = FeedEnclosure
-                      { feedEnclosureUrl    = GetR $ queueItemUri item
+                      { feedEnclosureUrl    = queueItemUri item
                       , feedEnclosureLength = fromMaybe 0 $ queueItemLength item
                       , feedEnclosureType   = fromMaybe "" $ queueItemType item
                       }

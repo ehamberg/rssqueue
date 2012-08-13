@@ -19,7 +19,6 @@ import Data.Text.Lazy (toStrict)
 import Text.XML
 import Text.Blaze.Html.Renderer.Text (renderHtml)
 import qualified Data.Map as Map
-import Data.Maybe (isJust)
 
 newtype RepPodcast = RepPodcast Content
 instance HasReps RepPodcast where
@@ -50,24 +49,24 @@ template Feed {..} render =
         : Element "lastBuildDate" Map.empty [NodeContent $ formatRFC822 feedUpdated]
         : Element "language" Map.empty [NodeContent feedLanguage]
         : Element "itunes:image" (Map.fromList [("href",render feedImage)]) []
-        : map (flip entryTemplate render) feedEntries
+        : map entryTemplate feedEntries
 
-entryTemplate :: FeedEntry url -> (url -> Text) -> Element
-entryTemplate FeedEntry {..} render =
+entryTemplate :: FeedEntry -> Element
+entryTemplate FeedEntry {..} =
     Element "item" Map.empty $ map NodeElement $
       Element "title" Map.empty [NodeContent feedEntryTitle]
-    : Element "guid" Map.empty [NodeContent $ render feedEntryLink]
+    : Element "guid" Map.empty [NodeContent $ feedEntryLink]
     : Element "pubDate" Map.empty [NodeContent $ formatRFC822 feedEntryUpdated]
     : Element "description" Map.empty [NodeContent $ toStrict $ renderHtml feedEntryContent]
     : case feedEntryEnclosure of
-           Just e  -> enclosureTemplate e feedEntryLink render
-           Nothing -> Element "link" Map.empty [NodeContent $ render feedEntryLink]
+           Just e  -> enclosureTemplate e feedEntryLink
+           Nothing -> Element "link" Map.empty [NodeContent $ feedEntryLink]
     : []
 
-enclosureTemplate :: FeedEnclosure url -> url -> (url -> Text) -> Element
-enclosureTemplate FeedEnclosure {..} url render =
+enclosureTemplate :: FeedEnclosure -> Text -> Element
+enclosureTemplate FeedEnclosure {..} url =
     Element "enclosure" (Map.fromList
-        [ ("url", render url)
+        [ ("url", url)
         , ("length", (pack . show) feedEnclosureLength)
         , ("type", feedEnclosureType)
         ]) []
