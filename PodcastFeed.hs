@@ -49,6 +49,7 @@ template Feed {..} render =
         : Element "description" Map.empty [NodeContent $ toStrict $ renderHtml feedDescription]
         : Element "lastBuildDate" Map.empty [NodeContent $ formatRFC822 feedUpdated]
         : Element "language" Map.empty [NodeContent feedLanguage]
+        : Element "itunes:image" (Map.fromList [("href",render feedImage)]) []
         : map (flip entryTemplate render) feedEntries
 
 entryTemplate :: FeedEntry url -> (url -> Text) -> Element
