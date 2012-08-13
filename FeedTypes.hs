@@ -1,11 +1,14 @@
 module FeedTypes
     ( Feed (..)
     , FeedEntry (..)
+    , FeedEnclosure (..)
     ) where
 
+import Import
 import Text.Hamlet      (Html)
 import Data.Time.Clock  (UTCTime)
 import Data.Text        (Text)
+import Data.Int         (Int64)
 
 -- | The overall feed
 data Feed url = Feed
@@ -13,23 +16,24 @@ data Feed url = Feed
     , feedLinkSelf    :: url
     , feedLinkHome    :: url
     , feedAuthor      :: Text
-
-
-    -- | note: currently only used for Rss
     , feedDescription :: Html
-
-    -- | note: currently only used for Rss, possible values: 
-    --   <http://www.rssboard.org/rss-language-codes>
     , feedLanguage    :: Text
-
+    , feedImage       :: url
     , feedUpdated     :: UTCTime
     , feedEntries     :: [FeedEntry url]
     }
 
 -- | Each feed entry
 data FeedEntry url = FeedEntry
-    { feedEntryLink    :: url
-    , feedEntryUpdated :: UTCTime
-    , feedEntryTitle   :: Text
-    , feedEntryContent :: Html
+    { feedEntryLink      :: url
+    , feedEntryUpdated   :: UTCTime
+    , feedEntryTitle     :: Text
+    , feedEntryContent   :: Html
+    , feedEntryEnclosure :: Maybe (FeedEnclosure url)
+    }
+
+data FeedEnclosure url = FeedEnclosure
+    { feedEnclosureUrl    :: url
+    , feedEnclosureLength :: Int64
+    , feedEnclosureType   :: Text
     }

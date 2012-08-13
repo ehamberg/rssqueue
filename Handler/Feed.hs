@@ -25,6 +25,7 @@ getFeedR identifier = do
                      , feedAuthor = "RSSQueue.com"
                      , feedLinkSelf = FeedR identifier
                      , feedLinkHome = HomeR
+                     , feedImage = HomeR -- FIXME
                      , feedDescription = "Feed from RSSQueue.com"
                      , feedLanguage = "en"
                      , feedUpdated = fromMaybe time lastItemTime
@@ -33,8 +34,14 @@ getFeedR identifier = do
 
 toFeedEntry :: QueueItem -> Handler (FeedEntry (Route RSSQueueApp))
 toFeedEntry item = return FeedEntry
-                   { feedEntryLink    = GetR $ queueItemUri item
-                   , feedEntryUpdated = queueItemCreated item
-                   , feedEntryTitle   = queueItemTitle item
-                   , feedEntryContent = ""
+                   { feedEntryLink      = GetR $ queueItemUri item
+                   , feedEntryUpdated   = queueItemCreated item
+                   , feedEntryTitle     = queueItemTitle item
+                   , feedEntryContent   = ""
+                   , feedEntryEnclosure = Just enclosure
                    }
+              where enclosure = FeedEnclosure
+                      { feedEnclosureUrl    = GetR $ queueItemUri item
+                      , feedEnclosureLength = fromMaybe 0 $ queueItemLength item
+                      , feedEnclosureType   = fromMaybe "" $ queueItemType item
+                      }

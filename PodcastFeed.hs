@@ -12,14 +12,14 @@ module PodcastFeed
     ) where
 
 import Import
-import Yesod.Core
 import FeedTypes
 import qualified Data.ByteString.Char8 as S8
-import Data.Text (Text, pack)
+import Data.Text (pack)
 import Data.Text.Lazy (toStrict)
 import Text.XML
 import Text.Blaze.Html.Renderer.Text (renderHtml)
 import qualified Data.Map as Map
+import Data.Maybe (isJust)
 
 newtype RepPodcast = RepPodcast Content
 instance HasReps RepPodcast where
@@ -52,10 +52,21 @@ template Feed {..} render =
         : map (flip entryTemplate render) feedEntries
 
 entryTemplate :: FeedEntry url -> (url -> Text) -> Element
-entryTemplate FeedEntry {..} render = Element "item" Map.empty $ map NodeElement
-    [ Element "title" Map.empty [NodeContent feedEntryTitle]
-    , Element "link" Map.empty [NodeContent $ render feedEntryLink]
-    , Element "guid" Map.empty [NodeContent $ render feedEntryLink]
-    , Element "pubDate" Map.empty [NodeContent $ formatRFC822 feedEntryUpdated]
-    , Element "description" Map.empty [NodeContent $ toStrict $ renderHtml feedEntryContent]
-    ]
+entryTemplate FeedEntry {..} render =
+    Element "item" Map.empty $ map NodeElement $
+      Element "title" Map.empty [NodeContent feedEntryTitle]
+    : Element "guid" Map.empty [NodeContent $ render feedEntryLink]
+    : Element "pubDate" Map.empty [NodeContent $ formatRFC822 feedEntryUpdated]
+    : Element "description" Map.empty [NodeContent $ toStrict $ renderHtml feedEntryContent]
+    : case feedEntryEnclosure of
+           Just e  -> enclosureTemplate e feedEntryLink render
+           Nothing -> Element "link" Map.empty [NodeContent $ render feedEntryLink]
+    : []
+
+enclosureTemplate :: FeedEnclosure url -> url -> (url -> Text) -> Element
+enclosureTemplate FeedEnclosure {..} url render =
+    Element "enclosure" (Map.fromList
+        [ ("url", render url)
+        , ("length", (pack . show) feedEnclosureLength)
+        , ("type", feedEnclosureType)
+        ]) []

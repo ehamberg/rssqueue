@@ -55,7 +55,7 @@ postEditR identifier = do
                            else "http://" `append` url
              time <- liftIO getCurrentTime
              ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
-             _ <- runDB $ insert $ QueueItem key title url' time ip
+             _ <- runDB $ insert $ QueueItem key title url' time ip Nothing Nothing
              jsonToRepJson $ String "success"
          FormFailure errors -> do
              liftIO $ print errors
