@@ -1,4 +1,3 @@
-{-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE CPP #-}
@@ -53,15 +52,15 @@ template Feed {..} render =
 
 entryTemplate :: FeedEntry -> Element
 entryTemplate FeedEntry {..} =
-    Element "item" Map.empty $ map NodeElement $
-      Element "title" Map.empty [NodeContent feedEntryTitle]
-    : Element "guid" Map.empty [NodeContent $ feedEntryLink]
-    : Element "pubDate" Map.empty [NodeContent $ formatRFC822 feedEntryUpdated]
-    : Element "description" Map.empty [NodeContent $ toStrict $ renderHtml feedEntryContent]
-    : case feedEntryEnclosure of
+    Element "item" Map.empty $ map NodeElement
+      [Element "title" Map.empty [NodeContent feedEntryTitle]
+      , Element "guid" Map.empty [NodeContent feedEntryLink]
+      , Element "pubDate" Map.empty [NodeContent $ formatRFC822 feedEntryUpdated]
+      , Element "description" Map.empty [NodeContent $ toStrict $ renderHtml feedEntryContent]
+      , case feedEntryEnclosure of
            Just e  -> enclosureTemplate e feedEntryLink
-           Nothing -> Element "link" Map.empty [NodeContent $ feedEntryLink]
-    : []
+           Nothing -> Element "link" Map.empty [NodeContent feedEntryLink]
+      ]
 
 enclosureTemplate :: FeedEnclosure -> Text -> Element
 enclosureTemplate FeedEnclosure {..} url =
