@@ -10,7 +10,8 @@ import Network.Wai (remoteHost)
 import Text.Julius (ToJavascript, toJavascript)
 import Data.Char (isAlphaNum)
 import Data.Maybe (isJust)
-import Data.Text (isPrefixOf, append, length, head, find)
+import Data.Text (isPrefixOf, append, length, head, find, pack)
+import Network.HTTP hiding (getRequest)
 
 instance ToJavascript Identifier where
     toJavascript (Identifier t) = toJavascript t
@@ -53,9 +54,20 @@ postEditR identifier = do
              let url' = if "http://" `isPrefixOf` url || "https://" `isPrefixOf` url
                            then url
                            else "http://" `append` url
+
+             headers <- liftIO $ getResponseHeaders url'
+             let len = case headers of
+                            Nothing -> Nothing
+                            Just hs -> lookupHeader HdrContentLength hs
+             let typ = case headers of
+                            Nothing -> Nothing
+                            Just hs -> lookupHeader HdrContentType hs
+             let len' = fmap read len
+             let typ' = fmap pack typ
+
              time <- liftIO getCurrentTime
              ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
-             _ <- runDB $ insert $ QueueItem key title url' time ip Nothing Nothing
+             _ <- runDB $ insert $ QueueItem key title url' time ip len' typ'
              jsonToRepJson $ String "success"
          FormFailure errors -> do
              liftIO $ print errors
