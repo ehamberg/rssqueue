@@ -37,9 +37,6 @@ getEditR identifier = do
 
     defaultLayout $ do
         lift getYesod >>= (addScriptEither . urlJqueryJs)
-        addButtonId <- lift newIdent
-        titleFieldId <- lift newIdent
-        urlFieldId <- lift newIdent
         setTitle $ toHtml $ queueTitle queue
         $(widgetFile "edit")
 
