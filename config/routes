@@ -3,8 +3,9 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/                   HomeR GET
-/new                NewR  GET POST
-/edit/#Identifier   EditR GET POST
-/feed/#Identifier   FeedR GET
-/get/#Text          GetR  GET
+/                                       HomeR       GET
+/new                                    NewR        GET POST
+/edit/#Identifier                       EditR       GET POST
+/edit/#Identifier/delete/#QueueItemId   DeleteItemR DELETE
+/feed/#Identifier                       FeedR       GET
+/get/#Text                              GetR        GET

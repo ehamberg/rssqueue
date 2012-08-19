@@ -61,3 +61,9 @@ postEditR identifier = do
              liftIO $ print errors
              jsonToRepJson $ String $ mconcat errors
          _ -> jsonToRepJson $ String "error"
+
+deleteDeleteItemR :: Identifier -> QueueItemId -> Handler RepJson
+deleteDeleteItemR feedId itemId = do
+    Entity key queue <- runDB $ getBy404 $ UniqueIdentifier feedId
+    runDB $ deleteWhere [QueueItemQueueId ==. key, QueueItemId ==. itemId]
+    jsonToRepJson $ String "deleted"
