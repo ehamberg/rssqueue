@@ -32,7 +32,7 @@ getEditR :: Identifier -> Handler RepHtml
 getEditR identifier = do
     Entity key queue <- runDB $ getBy404 $ UniqueIdentifier identifier
 
-    items <- runDB $ selectList [QueueItemQueueId ==. key] [Desc QueueItemCreated] >>= mapM (\(Entity _ v) -> return v)
+    items <- runDB $ selectList [QueueItemQueueId ==. key] [Desc QueueItemCreated]
     (widget, enctype) <- generateFormPost addItemForm
 
     defaultLayout $ do
