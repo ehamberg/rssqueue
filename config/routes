@@ -8,4 +8,3 @@
 /edit/#Identifier                       EditR       GET POST
 /edit/#Identifier/delete/#QueueItemId   DeleteItemR DELETE
 /feed/#Identifier                       FeedR       GET
-/get/#Text                              GetR        GET
