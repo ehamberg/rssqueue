@@ -12,12 +12,7 @@ feedTitleForm = renderBootstrap $ NewQueueTitle
 getNewR :: Handler RepHtml
 getNewR = do
     (widget, enctype) <- generateFormPost feedTitleForm
-    defaultLayout [whamlet|
-        <h2>New Queue
-        <form method=post action=@{NewR} enctype=#{enctype}>
-            ^{widget}
-            <input type=submit value="Continue →">
-    |]
+    defaultLayout $ $(widgetFile "new")
 
 postNewR :: Handler RepHtml
 postNewR = do
