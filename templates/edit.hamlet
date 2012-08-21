@@ -10,3 +10,5 @@
                 #{queueItemTitle queue_item}
             <span class="item_url">
                 #{queueItemUri queue_item}
+            <span class="item_delete">
+                <a href="@{DeleteItemR identifier itemId}">X</a>
