@@ -1,25 +1,25 @@
 <div class="container">
 
-  <!-- Main hero unit for a primary marketing message or call to action -->
+  <!-- Title and welcome message -->
   <div class="hero-unit">
     <h1>
       <h1>_{MsgWelcome}
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+    <p>_{MsgIntro}
     <p>
       <a class="btn btn-primary btn-large" href="@{NewR}">
-        Create new queue →
+        _{MsgCreateNew}
 
-  <!-- Example row of columns -->
+  <!-- Instructions -->
   <div class="row">
     <div class="span4">
-      <h2>Heading
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      <h2>1) _{MsgInstructions1h}
+      <p>_{MsgInstructions1t}
       <p><a class="btn" href="#">View details &raquo;</a>
     <div class="span4">
-      <h2>Heading
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      <h2>_{MsgInstructions2h}
+      <p>_{MsgInstructions2t}
       <p><a class="btn" href="#">View details &raquo;</a>
     <div class="span4">
-      <h2>Heading
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      <h2>3) _{MsgInstructions3h}
+      <p>_{MsgInstructions3t}
       <p><a class="btn" href="#">View details &raquo;</a>
