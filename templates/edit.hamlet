@@ -4,9 +4,11 @@
     <input type=submit value="Add">
 
 <ol id="feed_list">
-    $forall queue_item <- items
+    $forall Entity itemId queue_item <- items
         <li class="queue_item">
             <span class="item_title">
                 #{queueItemTitle queue_item}
             <span class="item_url">
                 #{queueItemUri queue_item}
+            <span class="item_delete">
+                <a href="@{DeleteItemR identifier itemId}">X</a>
