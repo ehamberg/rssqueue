@@ -1,1 +1,1 @@
-Hello: Hello
+Welcome: Welcome to RSS Queue
