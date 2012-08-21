@@ -17,7 +17,7 @@ instance ToJavascript Identifier where
     toJavascript (Identifier t) = toJavascript t
 
 addItemForm :: Html -> MForm RSSQueueApp RSSQueueApp (FormResult (Text,Text), Widget)
-addItemForm = renderDivs $ (,)
+addItemForm = renderBootstrap $ (,)
     <$> areq textField (FieldSettings "Title" Nothing (Just "item_title") Nothing []) Nothing
     <*> areq urlField' (FieldSettings "URL"   Nothing (Just "item_url")   Nothing []) Nothing
     where
