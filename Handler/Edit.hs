@@ -78,6 +78,6 @@ postEditR identifier = do
 
 deleteDeleteItemR :: Identifier -> QueueItemId -> Handler RepJson
 deleteDeleteItemR feedId itemId = do
-    Entity key queue <- runDB $ getBy404 $ UniqueIdentifier feedId
+    Entity key _ <- runDB $ getBy404 $ UniqueIdentifier feedId
     runDB $ deleteWhere [QueueItemQueueId ==. key, QueueItemId ==. itemId]
     jsonToRepJson $ String "deleted"
