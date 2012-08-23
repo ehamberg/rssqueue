@@ -12,6 +12,7 @@ import Data.Char (isAlphaNum)
 import Data.Maybe (isJust)
 import Data.Text (isPrefixOf, append, length, head, find, pack)
 import Network.HTTP hiding (getRequest)
+import Control.Concurrent (forkIO)
 
 instance ToJavascript Identifier where
     toJavascript (Identifier t) = toJavascript t
@@ -52,19 +53,23 @@ postEditR identifier = do
                            then url
                            else "http://" `append` url
 
-             headers <- liftIO $ getResponseHeaders url'
-             let len = case headers of
-                            Nothing -> Nothing
-                            Just hs -> lookupHeader HdrContentLength hs
-             let typ = case headers of
-                            Nothing -> Nothing
-                            Just hs -> lookupHeader HdrContentType hs
-             let len' = fmap read len
-             let typ' = fmap pack typ
+             runInnerHandler <- handlerToIO
+             _ <- liftIO $ forkIO $ runInnerHandler $ do
+                    headers <- liftIO $ getResponseHeaders url'
+                    let len = case headers of
+                                    Nothing -> Nothing
+                                    Just hs -> lookupHeader HdrContentLength hs
+                    let typ = case headers of
+                                    Nothing -> Nothing
+                                    Just hs -> lookupHeader HdrContentType hs
+                    let len' = fmap read len
+                    let typ' = fmap pack typ
 
-             time <- liftIO getCurrentTime
-             ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
-             _ <- runDB $ insert $ QueueItem key title url' time ip len' typ'
+                    time <- liftIO getCurrentTime
+                    ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
+                    _ <- runDB $ insert $ QueueItem key title url' time ip len' typ'
+                    return ()
+
              jsonToRepJson $ String "success"
          FormFailure errors -> do
              liftIO $ print errors
