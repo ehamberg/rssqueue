@@ -10,5 +10,5 @@ Instructions3h: Synchronize!
 Instructions3t: Add the feed to your feed reader and live happily ever after. When you add new items they are automatically synced to your phone/tablet/computer.
 
 CreateNewTitle: New RSS Queue
-CreateNew: Create new queue &rarr;
+CreateNew: Create new queue →
 Continue: Continue
