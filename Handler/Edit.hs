@@ -17,6 +17,9 @@ import Control.Concurrent (forkIO)
 instance ToJavascript Identifier where
     toJavascript (Identifier t) = toJavascript t
 
+urlBootstrapJs :: a -> Either (Route a) Text
+urlBootstrapJs _ = Right "//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/js/bootstrap.min.js"
+
 addItemForm :: Html -> MForm RSSQueueApp RSSQueueApp (FormResult (Text,Text), Widget)
 addItemForm = renderBootstrap $ (,)
     <$> areq textField (FieldSettings "Title" Nothing (Just "item_title") Nothing []) Nothing
@@ -38,6 +41,7 @@ getEditR identifier = do
 
     defaultLayout $ do
         lift getYesod >>= (addScriptEither . urlJqueryJs)
+        lift getYesod >>= (addScriptEither . urlBootstrapJs)
         setTitle $ toHtml $ queueTitle queue
         $(widgetFile "edit")
 

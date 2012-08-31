@@ -1,14 +1,25 @@
-<h2>#{queueTitle queue}
-<form id="addQueueForm" method="post" enctype=#{enctype}>
-    ^{widget}
-    <input type=submit value="Add">
+<div class="span12 well">
+    <h1>#{queueTitle queue}
 
-<ol id="feed_list">
+<div class="span12 well">
+    <h2>Add link to queue
+    <form id="addQueueForm" method="post" enctype=#{enctype}>
+        ^{widget}
+        <input class="btn btn-primary" type=submit value="Add to queue ↓">
+
+<div id="feed_list" class="span12 well">
     $forall Entity itemId queue_item <- items
-        <li class="queue_item">
-            <span class="item_title">
+        <div class="row">
+            <div class="span11 item_title">
                 #{queueItemTitle queue_item}
-            <span class="item_url">
+                <br>
                 #{queueItemUri queue_item}
-            <span class="item_delete">
-                <a href="@{DeleteItemR identifier itemId}">X</a>
+            <div class="span1 item_delete pull-right">
+                <div class="btn-group">
+                    <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="icon-trash icon-white">
+                        <span class="caret">
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="@{DeleteItemR identifier itemId}">
+                                Delete link
