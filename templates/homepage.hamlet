@@ -14,12 +14,9 @@
     <div class="span4">
       <h2>1) _{MsgInstructions1h}
       <p>_{MsgInstructions1t}
-      <p><a class="btn" href="#">View details &raquo;</a>
     <div class="span4">
       <h2>2) _{MsgInstructions2h}
       <p>_{MsgInstructions2t}
-      <p><a class="btn" href="#">View details &raquo;</a>
     <div class="span4">
       <h2>3) _{MsgInstructions3h}
       <p>_{MsgInstructions3t}
-      <p><a class="btn" href="#">View details &raquo;</a>
