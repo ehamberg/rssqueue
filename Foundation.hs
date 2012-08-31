@@ -92,6 +92,7 @@ instance Yesod RSSQueueApp where
         pc <- widgetToPageContent $ do
             $(widgetFile "normalize")
             addStylesheet $ StaticR css_bootstrap_css
+            addStylesheet $ StaticR css_bootstrap_responsive_css
             $(widgetFile "default-layout")
         hamletToRepHtml $(hamletFile "templates/default-layout-wrapper.hamlet")
 
