@@ -13,9 +13,13 @@ import Data.Maybe (isJust)
 import Data.Text (isPrefixOf, append, length, head, find, pack)
 import Network.HTTP hiding (getRequest)
 import Control.Concurrent (forkIO)
+import Text.Blaze (ToMarkup, toMarkup)
 
 instance ToJavascript Identifier where
     toJavascript (Identifier t) = toJavascript t
+
+instance ToMarkup Identifier where
+    toMarkup (Identifier t) = toMarkup t
 
 urlBootstrapJs :: a -> Either (Route a) Text
 urlBootstrapJs _ = Right "//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/js/bootstrap.min.js"
@@ -43,6 +47,7 @@ getEditR identifier = do
         lift getYesod >>= (addScriptEither . urlJqueryJs)
         lift getYesod >>= (addScriptEither . urlBootstrapJs)
         setTitle $ toHtml $ queueTitle queue
+        let feedid = toHtml identifier
         $(widgetFile "edit")
 
 postEditR :: Identifier -> Handler RepJson

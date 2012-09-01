@@ -1,5 +1,7 @@
 <div class="span12 well">
     <h1>#{queueTitle queue}
+    <p>
+        Feed link: http://rssqueue.com/feed/#{feedid}
 
 <div class="span12 well">
     <h2>Add link to queue
