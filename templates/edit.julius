@@ -12,11 +12,24 @@ $(document).ready(function() {
                      url = "http://" + url;
                    }
 
-                   $('<li>'
-                    +'<span class="item_title">'+$("#item_title").val()+'</span> '
-                    +'<span class="item_url">'+url+'</span>'
-                    +'</li>')
-                    .hide().prependTo('#feed_list').slideDown("slow");
+                    var newRow = '<div class="row">'
+                        +'  <div class="span11 item_title">'
+                        +'    '+$("#item_title").val()+'<br>'+url
+                        +'  </div>'
+                        +'  <div class="span1 item_delete pull-right">'
+                        +'    <div class="btn-group">'
+                        +'      <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href-"#">'
+                        +'        <i class="icon-trash icon-white"></i>'
+                        +'        <span class="caret"></span>'
+                        +'      </button>'
+                        +'      <ul class="dropdown-menu">'
+                        +'        <li><a href="">Delete link</a></li>'
+                        +'      </ul>'
+                        +'    </div>'
+                        +'  </div>'
+                        +'</div>';
+
+                   $(newRow).hide().prependTo('#feed_list').slideDown("slow");
                    $("#item_title").val('');
                    $("#item_url").val('');
                  } else {
