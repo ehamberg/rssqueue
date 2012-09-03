@@ -5,35 +5,37 @@ $(document).ready(function() {
       url: '/edit/#{identifier}',
       data: $('#addQueueForm').serialize(),
       success: function(response) {
-                 if (response == "success") {
+                 if (response == "error") {
+                   alert(response);
+                 } else {
                    var url = $("#item_url").val();
+
+                   var delete_url = '/edit/'+response[0]+'/delete/'+response[1];
 
                    if (!RegExp(/^https?:\/\//).test(url)) {
                      url = "http://" + url;
                    }
 
-                    var newRow = '<div class="row">'
-                        +'  <div class="span11 item_title">'
-                        +'    '+$("#item_title").val()+'<br>'+url
-                        +'  </div>'
-                        +'  <div class="span1 item_delete pull-right">'
-                        +'    <div class="btn-group">'
-                        +'      <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href-"#">'
-                        +'        <i class="icon-trash icon-white"></i>'
-                        +'        <span class="caret"></span>'
-                        +'      </button>'
-                        +'      <ul class="dropdown-menu">'
-                        +'        <li><a href="">Delete link</a></li>'
-                        +'      </ul>'
-                        +'    </div>'
-                        +'  </div>'
-                        +'</div>';
+                   var newRow = '<div class="row">'
+                       +'  <div class="span11 item_title">'
+                       +'    '+$("#item_title").val()+'<br>'+url
+                       +'  </div>'
+                       +'  <div class="span1 item_delete pull-right">'
+                       +'    <div class="btn-group">'
+                       +'      <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href-"#">'
+                       +'        <i class="icon-trash icon-white"></i>'
+                       +'        <span class="caret"></span>'
+                       +'      </button>'
+                       +'      <ul class="dropdown-menu">'
+                       +'        <li><a href="'+delete_url+'">Delete link</a></li>'
+                       +'      </ul>'
+                       +'    </div>'
+                       +'  </div>'
+                       +'</div>';
 
                    $(newRow).hide().prependTo('#feed_list').slideDown("slow");
                    $("#item_title").val('');
                    $("#item_url").val('');
-                 } else {
-                   alert(response);
                  }
                },
       error: function(jqXHR, textStatus, errorThrown) {

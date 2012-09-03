@@ -51,7 +51,7 @@ getEditR identifier = do
         $(widgetFile "edit")
 
 postEditR :: Identifier -> Handler RepJson
-postEditR identifier = do
+postEditR identifier@(Identifier i) = do
     Just (Entity key _) <- runDB $ getBy $ UniqueIdentifier identifier
 
     ((result, _), _) <- runFormPost addItemForm
@@ -62,24 +62,27 @@ postEditR identifier = do
                            then url
                            else "http://" `append` url
 
-             runInnerHandler <- handlerToIO
-             _ <- liftIO $ forkIO $ runInnerHandler $ do
-                    headers <- liftIO $ getResponseHeaders url'
-                    let len = case headers of
-                                    Nothing -> Nothing
-                                    Just hs -> lookupHeader HdrContentLength hs
-                    let typ = case headers of
-                                    Nothing -> Nothing
-                                    Just hs -> lookupHeader HdrContentType hs
-                    let len' = fmap read len
-                    let typ' = fmap pack typ
+             headers <- liftIO $ getResponseHeaders url'
+             let len = case headers of
+                             Nothing -> Nothing
+                             Just hs -> lookupHeader HdrContentLength hs
+             let typ = case headers of
+                             Nothing -> Nothing
+                             Just hs -> lookupHeader HdrContentType hs
+             let len' = fmap read len
+             let typ' = fmap pack typ
 
-                    time <- liftIO getCurrentTime
-                    ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
-                    _ <- runDB $ insert $ QueueItem key title url' time ip len' typ'
-                    return ()
+             time <- liftIO getCurrentTime
+             ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
+             item <- runDB $ insert $ QueueItem key title url' time ip len' typ'
 
-             jsonToRepJson $ String "success"
+             -- runInnerHandler <- handlerToIO
+             -- _ <- liftIO $ forkIO $ runInnerHandler $ do
+                 -- FIXME: update database with mimetype, time, ip
+
+             -- pass id and identifier to javascript handler so a “delete” link
+             -- can be generated
+             jsonToRepJson $ (i,unKey item)
          FormFailure errors -> do
              liftIO $ print errors
              jsonToRepJson $ String $ mconcat errors
