@@ -23,5 +23,5 @@
                         <span class="caret">
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="@{DeleteItemR identifier itemId}">
+                            <a href="#" onclick="javascript:deleteRequest('@{DeleteItemR identifier itemId}')">
                                 Delete link
