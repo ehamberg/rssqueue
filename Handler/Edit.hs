@@ -69,19 +69,7 @@ postEditR identifier@(Identifier i) = do
              -- fork off a thread that sends a HEAD request to get the added
              -- item's length and MIME type
              runInnerHandler <- handlerToIO
-             _ <- liftIO $ forkIO $ runInnerHandler $ do
-                    headers <- liftIO $ getResponseHeaders url'
-                    let len = case headers of
-                                    Nothing -> Nothing
-                                    Just hs -> lookupHeader HdrContentLength hs
-                    let typ = case headers of
-                                    Nothing -> Nothing
-                                    Just hs -> lookupHeader HdrContentType hs
-                    let len' = fmap read len
-                    let typ' = fmap pack typ
-
-                    runDB $ update item [QueueItemLength =. len'
-                                        ,QueueItemType   =. typ']
+             _ <- liftIO $ forkIO $ runInnerHandler $ updateFileInfo url' item
 
              -- pass id and identifier to javascript handler so a “delete” link
              -- can be generated
@@ -90,6 +78,20 @@ postEditR identifier@(Identifier i) = do
              liftIO $ print errors
              jsonToRepJson $ String $ mconcat errors
          _ -> jsonToRepJson $ String "error"
+    where updateFileInfo url item = do
+              headers <- liftIO $ getResponseHeaders url
+              let len = case headers of
+                              Nothing -> Nothing
+                              Just hs -> lookupHeader HdrContentLength hs
+              let typ = case headers of
+                              Nothing -> Nothing
+                              Just hs -> lookupHeader HdrContentType hs
+              let len' = fmap read len
+              let typ' = fmap pack typ
+
+              runDB $ update item [QueueItemLength =. len'
+                                  ,QueueItemType   =. typ']
+
 
 deleteDeleteItemR :: Identifier -> QueueItemId -> Handler RepJson
 deleteDeleteItemR feedId itemId = do
