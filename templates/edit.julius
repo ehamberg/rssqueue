@@ -27,7 +27,7 @@ $(document).ready(function() {
                        +'        <span class="caret"></span>'
                        +'      </button>'
                        +'      <ul class="dropdown-menu">'
-                       +'        <li><a href="'+delete_url+'">Delete link</a></li>'
+                       +'        <li><a href="#" onclick="javascript:deleteRequest(\''+delete_url+'\');$(this).closest(\'.row\').remove();">Remove</a></li>'
                        +'      </ul>'
                        +'    </div>'
                        +'  </div>'
