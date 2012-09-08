@@ -62,23 +62,26 @@ postEditR identifier@(Identifier i) = do
                            then url
                            else "http://" `append` url
 
-             headers <- liftIO $ getResponseHeaders url'
-             let len = case headers of
-                             Nothing -> Nothing
-                             Just hs -> lookupHeader HdrContentLength hs
-             let typ = case headers of
-                             Nothing -> Nothing
-                             Just hs -> lookupHeader HdrContentType hs
-             let len' = fmap read len
-             let typ' = fmap pack typ
-
              time <- liftIO getCurrentTime
              ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
-             item <- runDB $ insert $ QueueItem key title url' time ip len' typ'
+             item <- runDB $ insert $ QueueItem key title url' time ip Nothing Nothing
 
-             -- runInnerHandler <- handlerToIO
-             -- _ <- liftIO $ forkIO $ runInnerHandler $ do
-                 -- FIXME: update database with mimetype, time, ip
+             -- fork off a thread that sends a HEAD request to get the added
+             -- item's length and MIME type
+             runInnerHandler <- handlerToIO
+             _ <- liftIO $ forkIO $ runInnerHandler $ do
+                    headers <- liftIO $ getResponseHeaders url'
+                    let len = case headers of
+                                    Nothing -> Nothing
+                                    Just hs -> lookupHeader HdrContentLength hs
+                    let typ = case headers of
+                                    Nothing -> Nothing
+                                    Just hs -> lookupHeader HdrContentType hs
+                    let len' = fmap read len
+                    let typ' = fmap pack typ
+
+                    runDB $ update item [QueueItemLength =. len'
+                                        ,QueueItemType   =. typ']
 
              -- pass id and identifier to javascript handler so a “delete” link
              -- can be generated
