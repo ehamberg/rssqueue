@@ -5,6 +5,10 @@ import Import
 
 newtype NewQueueTitle = NewQueueTitle Text deriving Show
 
+-- length of identifiers for feeds
+identifierLength :: Int
+identifierLength = 5
+
 feedTitleForm :: Html -> MForm RSSQueueApp RSSQueueApp (FormResult NewQueueTitle, Widget)
 feedTitleForm = renderBootstrap $ NewQueueTitle
     <$> areq textField "Name" Nothing
@@ -21,7 +25,7 @@ postNewR = do
     case result of
          FormSuccess (NewQueueTitle title) -> do
             -- create a six-character, random identifier for the new queue
-            ident <- liftIO $ createIdentifier 6
+            ident <- liftIO $ createIdentifier identifierLength
             -- insert into database and redirect to edit page
             _ <- runDB $ insert $ Queue ident title
             redirect (EditR ident)
