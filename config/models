@@ -4,6 +4,12 @@ Queue
     UniqueIdentifier identifier
     deriving Show
 
+QueueShare
+    queueId    QueueId
+    identifier Identifier
+    UniqueQueueShare queueId identifier
+    deriving Show
+
 QueueItem
     queueId    QueueId
     title      Text
