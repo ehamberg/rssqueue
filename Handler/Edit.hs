@@ -14,6 +14,7 @@ import Data.Text (isPrefixOf, append, length, head, find, pack)
 import Network.HTTP hiding (getRequest)
 import Control.Concurrent (forkIO)
 import Text.Blaze (ToMarkup, toMarkup)
+import Web.Cookie
 
 instance ToJavascript Identifier where
     toJavascript (Identifier t) = toJavascript t
@@ -42,6 +43,14 @@ getEditR identifier = do
 
     items <- runDB $ selectList [QueueItemQueueId ==. key] [Desc QueueItemCreated]
     (widget, enctype) <- generateFormPost addItemForm
+
+    newCookie <- lookupCookie "new"
+    let isNew = case newCookie of
+                     Just "1" -> True
+                     _        -> False
+
+    -- set cookie to 0
+    setCookie $ parseSetCookie "new = 0;"
 
     defaultLayout $ do
         lift getYesod >>= (addScriptEither . urlJqueryJs)
