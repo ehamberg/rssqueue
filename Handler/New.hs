@@ -29,7 +29,7 @@ postNewR = do
             ident <- liftIO $ createIdentifier identifierLength
             -- insert into database and redirect to edit page
             _ <- runDB $ insert $ Queue ident title
-            setCookie $ parseSetCookie "new = 1; max-age = 1;"
+            setCookie $ parseSetCookie "new = 1; max-age = 1; path = /"
             redirect (EditR ident)
          -- on errors, simply redirect to “new”
          _ -> redirect NewR
