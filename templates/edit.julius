@@ -31,7 +31,7 @@ $(document).ready(function() {
                        +'      </ul>'
                        +'    </div>'
                        +'  </div>'
-                       +'</div>';
+                       +'</div><hr>';
 
                    $(newRow).hide().prependTo('#feed_list').slideDown("slow");
                    $("#item_title").val('');

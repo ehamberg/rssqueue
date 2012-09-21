@@ -32,3 +32,4 @@ $if isNew
                         <li>
                             <a href="#" onclick="javascript:deleteRequest('@{DeleteItemR identifier itemId}');$(this).closest('.row').slideUp(function() { $(this).closest('.row').remove(); });">
                                 Remove
+        <hr>
