@@ -19,8 +19,8 @@ $if isNew
 <div id="feed_list" class="span12 well">
     $forall Entity itemId queue_item <- items
         <div class="row">
-            <div class="span11 item_title">
-                #{queueItemTitle queue_item}
+            <div class="span11">
+                <span class="item_title">#{queueItemTitle queue_item}</span>
                 <br>
                 #{queueItemUri queue_item}
             <div class="span1 item_delete pull-right">
