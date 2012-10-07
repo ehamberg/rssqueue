@@ -2,8 +2,8 @@
 
   <!-- Title and welcome message -->
   <div class="hero-unit">
-    <h1>
-      <h1>_{MsgWelcome}
+    <img style="float: left; padding-right: 2em;" src=@{StaticR img_logo_png}>
+    <h1>_{MsgWelcome}
     <p>_{MsgIntro}
     <p>
       <a class="btn btn-primary btn-large" href="@{NewR}">

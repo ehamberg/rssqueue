@@ -1,4 +1,4 @@
-Welcome: Welcome to RSS Queue
+Welcome: Welcome.
 
 Intro: RSS Queue lets you quickly and easily create and curate RSS/podcast feeds that can be synchronized to your phone, tablet or computer.
 
