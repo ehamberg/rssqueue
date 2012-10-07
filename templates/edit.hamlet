@@ -7,8 +7,8 @@ $if isNew
     <div class="alert alert-block span8 offset2">
         <button type="button" class="close" data-dismiss="alert">×</button>
         <h4>
-            Hi!
-        This is your new queue. <strong>Please save this page's unique URL</strong>, since you will need it to edit the queue later.
+            _{MsgQueueCreatedGreeting}
+        _{MsgQueueCreatedText}
 
 <div class="span12 well">
     <h2>Add link to queue

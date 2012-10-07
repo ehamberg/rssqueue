@@ -12,3 +12,6 @@ Instructions3t: Add the feed to your feed reader and live happily ever after. Wh
 CreateNewTitle: New RSS Queue
 CreateNew: Create new queue →
 Continue: Continue
+
+QueueCreatedGreeting: Hi!
+QueueCreatedText: This is your new queue. Please save this page's unique address, since you will need it to edit the queue later.
