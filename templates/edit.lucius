@@ -23,6 +23,13 @@ span.item_url {
     width: 190px;
 }
 
+p.muted {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 span.item_delete {
     font-size: 20px;
     width: 10px;
