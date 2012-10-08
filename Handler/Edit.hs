@@ -52,8 +52,7 @@ addItemForm = renderBootstrap' $ (,)
     <*> areq urlField' (FieldSettings "URL"   Nothing (Just "item_url")   Nothing []) Nothing
     where
         urlField' = check validateURL textField
-        looksLikeUrl u =
-            length u >= 4 && isAlphaNum (head u) && isJust (find (=='.') u)
+        looksLikeUrl u = length u >= 4 && isAlphaNum (head u) && isJust (find (=='.') u)
         validateURL u
           | looksLikeUrl u = Right u
           | otherwise      = Left ("That doesn't look like an URL." :: Text)
