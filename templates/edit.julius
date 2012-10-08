@@ -17,7 +17,7 @@ $(document).ready(function() {
                    }
 
                    var newRow = '<div class="row">'
-                       +'  <div class="span11">'
+                       +'  <div class="span7">'
                        +'    <span class="item_title">'+$("#item_title").val()+'</span><br>'+url
                        +'  </div>'
                        +'  <div class="span1 item_delete pull-right">'

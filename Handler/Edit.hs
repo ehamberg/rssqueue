@@ -25,8 +25,29 @@ instance ToMarkup Identifier where
 urlBootstrapJs :: a -> Either (Route a) Text
 urlBootstrapJs _ = Right "//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/js/bootstrap.min.js"
 
+renderBootstrap' :: FormRender sub master a
+renderBootstrap' aform fragment = do
+    (res, views') <- aFormToForm aform
+    let views = views' []
+        has (Just _) = True
+        has Nothing  = False
+    let widget = [whamlet|
+$newline never
+\#{fragment}
+$forall view <- views
+    <div .control-group .clearfix .span3 :fvRequired view:.required :not $ fvRequired view:.optional :has $ fvErrors view:.error>
+        <label .control-label for=#{fvId view}>#{fvLabel view}
+        <div .controls .input>
+            ^{fvInput view}
+            $maybe tt <- fvTooltip view
+                <span .help-block>#{tt}
+            $maybe err <- fvErrors view
+                <span .help-block>#{err}
+|]
+    return (res, widget)
+
 addItemForm :: Html -> MForm RSSQueueApp RSSQueueApp (FormResult (Text,Text), Widget)
-addItemForm = renderBootstrap $ (,)
+addItemForm = renderBootstrap' $ (,)
     <$> areq textField (FieldSettings "Title" Nothing (Just "item_title") Nothing []) Nothing
     <*> areq urlField' (FieldSettings "URL"   Nothing (Just "item_url")   Nothing []) Nothing
     where

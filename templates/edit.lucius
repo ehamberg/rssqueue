@@ -35,3 +35,7 @@ span.item_delete a {
 #feed_list {
     margin-top: 1em;
 }
+
+#item_title, #item_url, #item_submit {
+    width: 100%;
+}
