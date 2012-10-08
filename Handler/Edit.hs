@@ -62,7 +62,7 @@ getEditR identifier = do
     Entity key queue <- runDB $ getBy404 $ UniqueIdentifier identifier
 
     items <- runDB $ selectList [QueueItemQueueId ==. key] [Desc QueueItemCreated]
-    (addItemForm, enctype) <- generateFormPost addItemForm
+    (addItemFormWidget, enctype) <- generateFormPost addItemForm
 
     -- if “new” cookie is set to 1, set isNew to True
     newCookie <- lookupCookie "new"

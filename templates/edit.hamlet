@@ -14,7 +14,7 @@ $if isNew
     <h2>Add link to queue
     <div class="row">
         <form id="addQueueForm" method="post" enctype=#{enctype}>
-            ^{addItemForm}
+            ^{addItemFormWidget}
             <div class="span2">
                 <label class="control-label">&nbsp;
                 <input id="item_submit" class="btn btn-primary" type=submit value="Add to queue ↓">
