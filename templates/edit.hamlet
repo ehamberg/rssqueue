@@ -13,7 +13,7 @@ $if isNew
 <div class="span12 well">
     <h2>Add link to queue
     <form id="addQueueForm" method="post" enctype=#{enctype}>
-        ^{widget}
+        ^{addItemForm}
         <input class="btn btn-primary" type=submit value="Add to queue ↓">
 
 <div id="feed_list" class="span12 well">
