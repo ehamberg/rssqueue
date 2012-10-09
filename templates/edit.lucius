@@ -30,15 +30,6 @@ p.muted {
     overflow: hidden;
 }
 
-span.item_delete {
-    font-size: 20px;
-    width: 10px;
-}
-
-span.item_delete a {
-    color: #d44;
-}
-
 #feed_list {
     margin-top: 1em;
 }

@@ -17,11 +17,11 @@ $(document).ready(function() {
                    }
 
                    var newRow = '<div class="row">'
-                       +'  <div class="span7">'
+                       +'  <div class="span9">'
                        +'    <span class="item_title">'+$("#item_title").val()+'</span><br><p class="muted">'+url+'</p>'
                        +'  </div>'
-                       +'  <div class="span1 item_delete pull-right">'
-                       +'    <div class="btn-group">'
+                       +'  <div class="span1">'
+                       +'    <div class="btn-group pull-right">'
                        +'      <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href-"#">'
                        +'        <i class="icon-trash icon-white"></i>'
                        +'        <span class="caret"></span>'
