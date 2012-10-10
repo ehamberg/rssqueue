@@ -27,7 +27,9 @@ $if isNew
     $forall Entity itemId queue_item <- items
         <div class="row">
             <div class="span11">
-                <span class="item_title">#{queueItemTitle queue_item}</span>
+                <span class="item_title">
+                    <a href="#{queueItemUri queue_item}">
+                        #{queueItemTitle queue_item}</span>
                 <br>
                 <p class="muted">#{queueItemUri queue_item}
             <div class="span1">

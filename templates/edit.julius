@@ -18,7 +18,7 @@ $(document).ready(function() {
 
                    var newRow = '<div class="row">'
                        +'  <div class="span11">'
-                       +'    <span class="item_title">'+$("#item_title").val()+'</span><br><p class="muted">'+url+'</p>'
+                       +'    <span class="item_title"><a href="'+url+'">'+$("#item_title").val()+'</a></span><br><p class="muted">'+url+'</p>'
                        +'  </div>'
                        +'  <div class="span1">'
                        +'    <div class="btn-group pull-right">'
