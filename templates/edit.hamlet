@@ -1,28 +1,32 @@
-<div class="span8 offset2 well">
-    <h1>#{queueTitle queue}
-    <p>
-        Feed link: http://rssqueue.com/feed/#{feedid}
+<div class="row">
+    <div class="span12 well">
+        <h1>#{queueTitle queue}
+        <p>
+            Feed link: http://rssqueue.com/feed/#{feedid}
 
 $if isNew
-    <div class="alert alert-block span6 offset3">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <h4>
-            _{MsgQueueCreatedGreeting}
-        _{MsgQueueCreatedText}
-
-<div class="span8 offset2 well">
-    <h2>Add link to queue
     <div class="row">
-        <form id="addQueueForm" method="post" enctype=#{enctype}>
-            ^{addItemFormWidget}
-            <div class="span2">
-                <label class="control-label">&nbsp;
-                <input id="item_submit" class="btn btn-primary" type=submit value="Add to queue ↓">
+        <div class="alert alert-block span6 offset3">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4>
+                _{MsgQueueCreatedGreeting}
+            _{MsgQueueCreatedText}
 
-<div id="feed_list" class="span8 offset2 well">
+<div class="row">
+    <div class="span12">
+        <h2>Add link to queue
+
+<div class="row">
+    <form id="addQueueForm" method="post" enctype=#{enctype}>
+        ^{addItemFormWidget}
+        <div class="span2">
+            <label class="control-label">&nbsp;
+            <input id="item_submit" class="btn btn-primary" type=submit value="Add to queue ↓">
+
+<div id="feed_list">
     $forall Entity itemId queue_item <- items
         <div class="row">
-            <div class="span7">
+            <div class="span11">
                 <span class="item_title">#{queueItemTitle queue_item}</span>
                 <br>
                 <p class="muted">#{queueItemUri queue_item}
@@ -35,4 +39,3 @@ $if isNew
                         <li>
                             <a href="#" onclick="javascript:deleteRequest('@{DeleteItemR identifier itemId}');$(this).closest('.row').slideUp(function() { $(this).closest('.row').remove(); });">
                                 Remove
-        <hr>

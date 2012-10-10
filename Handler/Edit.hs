@@ -35,7 +35,7 @@ renderBootstrap' aform fragment = do
 $newline never
 \#{fragment}
 $forall view <- views
-    <div .control-group .clearfix .span3 :fvRequired view:.required :not $ fvRequired view:.optional :has $ fvErrors view:.error>
+    <div .control-group .clearfix .span5 :fvRequired view:.required :not $ fvRequired view:.optional :has $ fvErrors view:.error>
         <label .control-label for=#{fvId view}>#{fvLabel view}
         <div .controls .input>
             ^{fvInput view}
