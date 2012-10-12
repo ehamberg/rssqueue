@@ -103,7 +103,7 @@ postEditR identifier@(Identifier i) = do
 
              -- pass id and identifier to javascript handler so a “delete” link
              -- can be generated
-             jsonToRepJson $ (i,unKey item)
+             jsonToRepJson (i,unKey item)
          FormFailure errors -> do
              liftIO $ print errors
              jsonToRepJson $ String $ mconcat errors
