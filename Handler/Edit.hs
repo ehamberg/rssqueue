@@ -1,4 +1,4 @@
-{-# LANGUAGE TupleSections, OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
 module Handler.Edit where
