@@ -10,7 +10,7 @@ import Data.List (head)
 
 getFeedR :: Identifier -> Handler RepPodcast
 getFeedR identifier = do
-    Entity key queue <- runDB $ getBy404 $ UniqueIdentifier identifier
+    Entity key queue <- runDB $ getBy404 $ UniqueShareId identifier
 
     items <- runDB $ selectList [QueueItemQueueId ==. key] [Desc QueueItemCreated] >>= mapM (\(Entity _ v) -> return v)
     is <- mapM toFeedEntry items

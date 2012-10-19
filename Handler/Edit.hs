@@ -65,7 +65,7 @@ getEditR identifier = do
         lift getYesod >>= (addScriptEither . urlJqueryJs)
         lift getYesod >>= (addScriptEither . urlBootstrapJs)
         setTitle $ toHtml $ queueTitle queue `append` " – RSSQueue"
-        let feedid = toHtml identifier
+        let feedid = toHtml $ queueShareId queue
         $(widgetFile "edit")
 
 postEditR :: Identifier -> Handler RepJson
