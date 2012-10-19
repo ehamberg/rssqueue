@@ -9,7 +9,7 @@ module Import
     , module Control.Applicative
     , Text
     , getIpAddr
-    , createIdentifier
+    , createIdentifiers
     , getResponseHeaders
     ) where
 
@@ -48,9 +48,9 @@ getResponseHeaders url =
                 Right (Response _ _ hs (_::String)) -> return $ Just hs
     where url' = unpack url
 
-createIdentifier :: Int -> IO Identifier
-createIdentifier len = do
+createIdentifiers :: Int -> IO (Identifier,Identifier)
+createIdentifiers len = do
     g <- getStdGen
-    let str = take len . filter isAlphaNum . map chr $ randomRs (ord '0', ord 'z') g
-    return $ Identifier $ pack str
+    let str = take (2*len) . filter isAlphaNum . map chr $ randomRs (ord '0', ord 'z') g
+    return (Identifier . pack $ take len str, Identifier .pack $ drop len str)
 

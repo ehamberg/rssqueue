@@ -1,7 +1,10 @@
 Queue
     identifier       Identifier
+    shareId          Identifier
     title            Text
+    public           Bool default=0
     UniqueIdentifier identifier
+    UniqueShareId    shareId
     deriving Show
 
 QueueItem

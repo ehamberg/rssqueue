@@ -25,11 +25,13 @@ postNewR = do
 
     case result of
          FormSuccess (NewQueueTitle title) -> do
-            -- create a six-character, random identifier for the new queue
-            ident <- liftIO $ createIdentifier identifierLength
+            -- create two six-character identifiers for the queue – one secret
+            -- and one to use if the user wishes to make the queue public
+            (secretId,shareId) <- liftIO $ createIdentifiers identifierLength
+
             -- insert into database and redirect to edit page
-            _ <- runDB $ insert $ Queue ident title
+            _ <- runDB $ insert $ Queue secretId shareId title False
             setCookie $ parseSetCookie "new = 1; max-age = 1; path = /"
-            redirect (EditR ident)
+            redirect (EditR secretId)
          -- on errors, simply redirect to “new”
          _ -> redirect NewR
