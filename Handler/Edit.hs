@@ -1,5 +1,4 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 
 module Handler.Edit where
 
@@ -7,23 +6,12 @@ import Import hiding (length)
 import Yesod.Form.Jquery (urlJqueryJs)
 import Data.Time.Clock (getCurrentTime)
 import Network.Wai (remoteHost)
-import Text.Julius (ToJavascript, toJavascript)
 import Data.Char (isAlphaNum)
 import Data.Maybe (isJust)
 import Data.Text (isPrefixOf, append, length, head, find, pack)
 import Network.HTTP hiding (getRequest)
 import Control.Concurrent (forkIO)
-import Text.Blaze (ToMarkup, toMarkup)
 import Control.Monad (when)
-
-instance ToJavascript Identifier where
-    toJavascript (Identifier t) = toJavascript t
-
-instance ToMarkup Identifier where
-    toMarkup (Identifier t) = toMarkup t
-
-urlBootstrapJs :: a -> Either (Route a) Text
-urlBootstrapJs _ = Right "//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/js/bootstrap.min.js"
 
 renderBootstrap' :: FormRender sub master a
 renderBootstrap' aform fragment = do
@@ -76,7 +64,7 @@ getEditR identifier = do
     defaultLayout $ do
         lift getYesod >>= (addScriptEither . urlJqueryJs)
         lift getYesod >>= (addScriptEither . urlBootstrapJs)
-        setTitle $ toHtml $ queueTitle queue
+        setTitle $ toHtml $ queueTitle queue `append` " – RSSQueue"
         let feedid = toHtml identifier
         $(widgetFile "edit")
 

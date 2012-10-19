@@ -1,4 +1,5 @@
 {-# Language ScopedTypeVariables #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module Import
     ( module Prelude
     , module Yesod
@@ -8,6 +9,7 @@ module Import
     , module Data.Monoid
     , module Control.Applicative
     , Text
+    , urlBootstrapJs
     , getIpAddr
     , createIdentifiers
     , getResponseHeaders
@@ -25,9 +27,21 @@ import Data.Char
 import Network.HTTP hiding (Request)
 import qualified Network.HTTP as HTTP
 import Network.URI
+import Text.Julius (ToJavascript, toJavascript)
+import Text.Blaze (ToMarkup, toMarkup)
 
 import Settings.StaticFiles
 import Settings.Development
+
+instance ToJavascript Identifier where
+    toJavascript (Identifier t) = toJavascript t
+
+instance ToMarkup Identifier where
+    toMarkup (Identifier t) = toMarkup t
+
+-- central bootstrap url
+urlBootstrapJs :: a -> Either (Route a) Text
+urlBootstrapJs _ = Right "//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/js/bootstrap.min.js"
 
 -- Utility functions
 

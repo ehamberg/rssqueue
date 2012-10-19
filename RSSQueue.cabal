@@ -33,6 +33,7 @@ library
                      Handler.Home
                      Handler.New
                      Handler.Edit
+                     Handler.View
                      Handler.Feed
 
     if flag(dev) || flag(library-only)

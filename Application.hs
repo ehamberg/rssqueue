@@ -20,6 +20,7 @@ import Network.HTTP.Conduit (newManager, def)
 import Handler.Home
 import Handler.New
 import Handler.Edit
+import Handler.View
 import Handler.Feed
 
 -- This line actually creates our YesodSite instance. It is the second half

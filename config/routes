@@ -7,4 +7,5 @@
 /new                                    NewR        GET POST
 /edit/#Identifier                       EditR       GET POST
 /edit/#Identifier/delete/#QueueItemId   DeleteItemR DELETE
+/view/#Identifier                       ViewR       GET
 /feed/#Identifier                       FeedR       GET
