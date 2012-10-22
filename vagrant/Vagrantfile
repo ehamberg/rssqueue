@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant::Config.run do |config|
+  config.vm.box = "precise32"
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+
+  config.vm.forward_port 3000, 3000
+
+  sources = File.expand_path File.join(__FILE__, '..', '..')
+  project = File.basename(sources)
+
+  config.vm.customize [
+    "modifyvm", :id,
+    "--name",   "Haskell VM - #{project}",
+    "--memory", "1024"
+  ]
+
+  config.ssh.forward_agent = true
+  config.vm.share_folder("v-src", "/app", sources)
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "cookbooks"
+    chef.add_recipe "apt"
+    chef.add_recipe "haskell-platform"
+  end
+end
