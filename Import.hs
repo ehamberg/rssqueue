@@ -64,7 +64,8 @@ getResponseHeaders url =
 
 createIdentifiers :: Int -> IO (Identifier,Identifier)
 createIdentifiers len = do
-    g <- getStdGen
-    let str = take (2*len) . filter isAlphaNum . map chr $ randomRs (ord '0', ord 'z') g
-    return (Identifier . pack $ take len str, Identifier .pack $ drop len str)
+  g <- getStdGen
+  let str = take (2*len) . filter idChar . map chr $ randomRs (ord '0', ord 'z') g
+  return (Identifier . pack $ take len str, Identifier .pack $ drop len str)
+    where idChar c = isAlphaNum c && c `notElem` "0OI1l"
 
