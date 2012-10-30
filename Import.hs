@@ -41,7 +41,7 @@ instance ToMarkup Identifier where
 
 -- central bootstrap url
 urlBootstrapJs :: a -> Either (Route a) Text
-urlBootstrapJs _ = Right "//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.0/js/bootstrap.min.js"
+urlBootstrapJs _ = Right "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"
 
 -- Utility functions
 
