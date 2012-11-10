@@ -1,8 +1,4 @@
-<div class="row">
-    <div class="span12">
-        <h1>#{queueTitle queue}
-        <p>
-            Feed link: http://rssqueue.com/feed/#{feedid}
+^{feedinfo}
 
 $if isNew
     <div class="row">

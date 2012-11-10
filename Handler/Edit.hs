@@ -62,13 +62,14 @@ getEditR identifier = do
     when isNew $ deleteCookie "new" "/"
 
     let showDelete = True
+    let feedid = toHtml $ queueShareId queue
+    let feedinfo = $(widgetFile "feedinfo")
     let itemlist = $(widgetFile "itemlist")
 
     defaultLayout $ do
         lift getYesod >>= (addScriptEither . urlJqueryJs)
         lift getYesod >>= (addScriptEither . urlBootstrapJs)
         setTitle $ toHtml $ queueTitle queue `append` " – RSSQueue"
-        let feedid = toHtml $ queueShareId queue
         $(widgetFile "edit")
 
 postEditR :: Identifier -> Handler RepJson
