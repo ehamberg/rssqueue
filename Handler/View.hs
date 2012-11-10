@@ -11,10 +11,11 @@ getViewR identifier = do
 
     items <- runDB $ selectList [QueueItemQueueId ==. key] [Desc QueueItemCreated]
 
+    let showDelete = False
+    let itemlist = $(widgetFile "itemlist")
+
     defaultLayout $ do
-        --lift getYesod >>= (addScriptEither . urlJqueryJs)
         lift getYesod >>= (addScriptEither . urlBootstrapJs)
         setTitle $ toHtml $ queueTitle queue `append` " – RSSQueue"
-        --let feedid = toHtml identifier
-        -- $(widgetFile "v")
-        [whamlet|#{show items}|]
+        let feedid = toHtml identifier
+        $(widgetFile "view")

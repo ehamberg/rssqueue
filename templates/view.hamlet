@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="span12">
+        <h1>#{queueTitle queue}
+        <p>
+            Feed link: http://rssqueue.com/feed/#{feedid}
+
+<div id="feed_list">
+    ^{itemlist}

@@ -61,6 +61,9 @@ getEditR identifier = do
     -- delete “new” cookie
     when isNew $ deleteCookie "new" "/"
 
+    let showDelete = True
+    let itemlist = $(widgetFile "itemlist")
+
     defaultLayout $ do
         lift getYesod >>= (addScriptEither . urlJqueryJs)
         lift getYesod >>= (addScriptEither . urlBootstrapJs)

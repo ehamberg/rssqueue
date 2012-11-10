@@ -24,20 +24,4 @@ $if isNew
             <input id="item_submit" class="btn btn-primary" type=submit value="Add to queue ↓">
 
 <div id="feed_list">
-    $forall Entity itemId queue_item <- items
-        <div class="row">
-            <div class="span11">
-                <span class="item_title">
-                    <a href="#{queueItemUri queue_item}">
-                        #{queueItemTitle queue_item}</span>
-                <br>
-                <p class="muted">#{queueItemUri queue_item}
-            <div class="span1">
-                <div class="btn-group pull-right">
-                    <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="icon-trash icon-white">
-                        <span class="caret">
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#" onclick="javascript:deleteRequest('@{DeleteItemR identifier itemId}');$(this).closest('.row').slideUp(function() { $(this).closest('.row').remove(); });">
-                                Remove
+    ^{itemlist}
