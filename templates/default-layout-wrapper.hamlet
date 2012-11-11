@@ -40,8 +40,11 @@ $newline never
                         RSS<span style="color: rgb(232,112,53)">Queue</span>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href=@{HomeR}>Home</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href=@{HomeR}>Home</a></li>
+                            <li class="divider-vertical"></li>
                             <li><a href=@{AboutR}>About</a></li>
+                            <li class="divider-vertical"></li>
 
         <div class="container">
             ^{pageBody pc}
