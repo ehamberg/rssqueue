@@ -1,22 +1,20 @@
-<div class="container">
-
-  <!-- Title and welcome message -->
-  <div class="hero-unit">
+<!-- Title and welcome message -->
+<div class="hero-unit">
     <img style="float: left; padding-right: 2em;" src=@{StaticR img_logo_png}>
     <h1>_{MsgWelcome}
     <p>_{MsgIntro}
     <p>
-      <a class="btn btn-primary btn-large" href="@{NewR}">
-        _{MsgCreateNew}
+        <a class="btn btn-primary btn-large" href="@{NewR}">
+            _{MsgCreateNew}
 
-  <!-- Instructions -->
-  <div class="row">
+<!-- Instructions -->
+<div class="row">
     <div class="span4">
-      <h2>1) _{MsgInstructions1h}
-      <p>_{MsgInstructions1t}
+        <h2>1) _{MsgInstructions1h}
+        <p>_{MsgInstructions1t}
     <div class="span4">
-      <h2>2) _{MsgInstructions2h}
-      <p>_{MsgInstructions2t}
+        <h2>2) _{MsgInstructions2h}
+        <p>_{MsgInstructions2t}
     <div class="span4">
-      <h2>3) _{MsgInstructions3h}
-      <p>_{MsgInstructions3t}
+        <h2>3) _{MsgInstructions3h}
+        <p>_{MsgInstructions3t}
