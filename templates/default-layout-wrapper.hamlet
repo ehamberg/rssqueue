@@ -16,6 +16,12 @@ $newline never
 
         ^{pageHead pc}
 
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+
         \<!--[if lt IE 9]>
         \<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         \<![endif]-->
@@ -23,6 +29,20 @@ $newline never
         <script>
           document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
     <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    <a class="brand" href=@{HomeR}>
+                        RSS<span style="color: rgb(232,112,53)">Queue</span>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href=@{HomeR}>Home</a></li>
+                            <li><a href=@{AboutR}>About</a></li>
+
         <div class="container">
             ^{pageBody pc}
             <footer>
