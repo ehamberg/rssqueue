@@ -9,3 +9,4 @@
 /edit/#Identifier/delete/#QueueItemId   DeleteItemR DELETE
 /view/#Identifier                       ViewR       GET
 /feed/#Identifier                       FeedR       GET
+/about                                  AboutR      GET
