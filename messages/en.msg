@@ -1,6 +1,6 @@
 Welcome: Welcome.
 
-Intro: RSS Queue lets you quickly and easily create and curate RSS/podcast feeds that can be synchronized to your phone, tablet or computer.
+Intro: RSS Queue lets you quickly and easily create and curate RSS/podcast feeds that can be synchronized to your phone, tablet or computer. No registration is needed.
 
 Instructions1h: Create a queue
 Instructions1t: No registration needed. Just give your queue a name (“Funny cat videos”) and save the address.
