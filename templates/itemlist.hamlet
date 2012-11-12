@@ -19,7 +19,7 @@ $if showDelete
 $else
     $forall Entity _ queue_item <- items
         <div class="row">
-            <div class="span11">
+            <div class="span12">
                 <span class="item_title">
                     <a href="#{queueItemUri queue_item}">
                         #{queueItemTitle queue_item}</span>
