@@ -19,5 +19,6 @@ $if isNew
             <label class="control-label">&nbsp;
             <input id="item_submit" class="btn btn-primary" type=submit value="Add to queue ↓">
 
-<div id="feed_list">
-    ^{itemlist}
+<div class="row">
+    <div class="span12">
+        ^{itemlist}
