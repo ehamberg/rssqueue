@@ -1,4 +1,3 @@
 ^{feedinfo}
 
-<div id="feed_list">
-    ^{itemlist}
+^{itemlist}
