@@ -18,5 +18,5 @@
                     <span class="caret">
                   <ul class="dropdown-menu">
                     <li>
-                      <a href="#" onclick="javascript:deleteRequest('@{DeleteItemR identifier itemId}')">
-                        Remove
+                      <a href="#" onclick="javascript:deleteRequest('@{DeleteItemR identifier itemId}');$(this).closest('tr').slideUp(function() { $(this).closest('tr').remove(); });">
+                        _{MsgFeedListRemove}
