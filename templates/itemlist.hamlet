@@ -1,9 +1,12 @@
-<table id="item_list" class="table table-striped">
-    $forall Entity itemId queue_item <- items
-        <tr>
-            <td>
-                <span class="item_title">
-                    <a href="#{queueItemUri queue_item}">
-                        #{queueItemTitle queue_item}</span>
-                <br>
-                <p class="muted">#{queueItemUri queue_item}
+<div class="row">
+    <div class="span12 well">
+        <table id="item_list" class="table">
+            <tbody>
+                $forall Entity itemId queue_item <- items
+                    <tr>
+                        <td>
+                            <span class="item_title">
+                                <a href="#{queueItemUri queue_item}">
+                                    #{queueItemTitle queue_item}</span>
+                            <br>
+                            <p class="muted">#{queueItemUri queue_item}
