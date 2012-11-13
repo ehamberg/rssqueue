@@ -33,6 +33,7 @@ $(document).ready(function() {
                        +'</tr>';
 
                    $(newRow).hide().prependTo('#item_list').fadeIn("slow");
+                   modifyNumItems(1);
                    $("#item_title").val('');
                    $("#item_url").val('');
                  }
@@ -47,6 +48,7 @@ $(document).ready(function() {
 });
 
 function deleteRequest(url) {
+  modifyNumItems(-1);
   $.ajax({
       url: url,
       type: 'DELETE',
@@ -54,4 +56,20 @@ function deleteRequest(url) {
           return;
       }
   });
+}
+
+// FIXME: plural of “item[s]” will not change
+function modifyNumItems(delta) {
+  var tokens = $('#num_items').html().split(' ')
+  var n = parseInt(tokens[0]);
+  n += delta;
+
+  if (n < 0) n = 0;
+
+  var newText = n + ' ' + tokens.slice(1).join(' ');
+
+  $('#num_items').fadeOut(300, function() {
+      $(this).text(newText).fadeIn(300);
+  });
+
 }

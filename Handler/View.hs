@@ -4,6 +4,7 @@ module Handler.View where
 
 import Import
 import Data.Text (append)
+import qualified Data.List (length)
 
 getViewR :: Identifier -> Handler RepHtml
 getViewR identifier = do

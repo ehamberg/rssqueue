@@ -1,6 +1,14 @@
 <div class="row">
   <div class="span12 well">
     <table id="item_list" class="table table-striped">
+      <thead>
+        <tr>
+          $if showDelete
+            <th id="num_items" colspan="2">
+              _{MsgFeedListNumItems $ Data.List.length items}
+          $else
+            <th id="num_items">
+              _{MsgFeedListNumItems $ Data.List.length items}
       <tbody>
         $forall Entity itemId queue_item <- items
           <tr>

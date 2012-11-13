@@ -12,6 +12,7 @@ import Data.Text (isPrefixOf, append, length, head, find, pack)
 import Network.HTTP hiding (getRequest)
 import Control.Concurrent (forkIO)
 import Control.Monad (when)
+import qualified Data.List (length)
 
 renderBootstrap' :: FormRender sub master a
 renderBootstrap' aform fragment = do

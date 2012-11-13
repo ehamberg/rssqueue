@@ -37,3 +37,7 @@ p.muted {
 #item_title, #item_url, #item_submit {
     width: 100%;
 }
+
+#num_items {
+    text-align: right;
+}

@@ -39,6 +39,11 @@ data RSSQueueApp = RSSQueueApp
     , persistConfig :: Settings.PersistConfig
     }
 
+-- i18n helper
+plural :: Int -> String -> String -> String
+plural 1 x _ = x
+plural _ _ y = y
+
 -- Set up i18n messages. See the message folder.
 mkMessage "RSSQueueApp" "messages" "en"
 

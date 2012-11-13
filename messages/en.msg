@@ -15,3 +15,6 @@ Continue: Continue
 
 QueueCreatedGreeting: Hi!
 QueueCreatedText: This is your new queue. Please save this page's unique address, since you will need it to edit the queue later.
+
+FeedListRemove: Remove
+FeedListNumItems count@Int: #{show count} #{plural count "item" "items"} in the queue
