@@ -1,22 +1,22 @@
 ^{feedinfo}
 
 $if isNew
-    <div class="row">
-        <div class="alert alert-block span6 offset3">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <h4>
-                _{MsgQueueCreatedGreeting}
-            _{MsgQueueCreatedText}
+  <div class="row">
+    <div class="alert alert-block span6 offset3">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <h4>
+        _{MsgQueueCreatedGreeting}
+      _{MsgQueueCreatedText}
 
 <div class="row">
-    <div class="span12">
-        <h2>Add link to queue
+  <div class="span12">
+    <h2>Add link to queue
 
 <div class="row">
-    <form id="addQueueForm" method="post" enctype=#{enctype}>
-        ^{addItemFormWidget}
-        <div class="span2">
-            <label class="control-label">&nbsp;
-            <input id="item_submit" class="btn btn-primary" type=submit value="Add to queue ↓">
+  <form id="addQueueForm" method="post" enctype=#{enctype}>
+    ^{addItemFormWidget}
+    <div class="span2">
+      <label class="control-label">&nbsp;
+      <input id="item_submit" class="btn btn-primary" type=submit value="Add to queue ↓">
 
 ^{itemlist}
