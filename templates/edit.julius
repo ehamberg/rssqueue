@@ -18,8 +18,19 @@ $(document).ready(function() {
 
                    var newRow = '<tr><td>'
                        +'<span class="item_title"><a href="'+url+'">'
-                       +$("#item_title").val()+'</a></span><br><p class="muted">'+url+'</p>'
-                       +'</td></tr>';
+                       +$("#item_title").val()+'</a></span><br><p class="muted">'+url+'</p></td>'
+                       +'<td>'
+                       +'  <div class="btn-group pull-right">'
+                       +'    <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href-"#">'
+                       +'      <i class="icon-trash icon-white"></i>'
+                       +'      <span class="caret"></span>'
+                       +'    </button>'
+                       +'    <ul class="dropdown-menu">'
+                       +'      <li><a href="#" onclick="javascript:deleteRequest(\''+delete_url+'\');$(this).closest(\'tr\').fadeOut(function() { $(this).closest(\'tr\').remove(); });">Remove</a></li>'
+                       +'    </ul>'
+                       +'  </div>'
+                       +'</td>'
+                       +'</tr>';
 
                    $(newRow).hide().prependTo('#item_list').fadeIn("slow");
                    $("#item_title").val('');
