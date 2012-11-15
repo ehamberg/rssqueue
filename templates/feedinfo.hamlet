@@ -5,8 +5,10 @@
       <ul>
         <li>
           Feed link: <a href=@{FeedR feedid}>@{FeedR feedid}</a>
-          <i class="icon-question-sign"></i>
+          <abbr title="The link you should add to your podcaster/feed reader. See the help page if you are unsure about how to do this.">
+            <i class="icon-question-sign"></i>
         $if showDelete
           <li>
             Read-only link: <a href=@{ViewR feedid}>@{ViewR feedid}</a>
-            <i class="icon-question-sign"></i>
+            <abbr title="Link to this queue that can be shared without giving people editing rights.">
+              <i class="icon-question-sign"></i>
