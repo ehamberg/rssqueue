@@ -1,5 +1,12 @@
 <div class="row">
-  <div class="span12">
-    <h1>#{queueTitle queue}
-    <p>
-      Feed link: @{ViewR feedid}
+  <div class="span8 offset2">
+    <div class="feedinfo">
+      <h1>#{queueTitle queue}
+      <ul>
+        <li>
+          Feed link: <a href=@{FeedR feedid}>@{FeedR feedid}</a>
+          <i class="icon-question-sign"></i>
+        $if showDelete
+          <li>
+            Read-only link: <a href=@{ViewR feedid}>@{ViewR feedid}</a>
+            <i class="icon-question-sign"></i>
