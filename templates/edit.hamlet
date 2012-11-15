@@ -2,15 +2,15 @@
 
 $if isNew
   <div class="row">
-    <div class="alert alert-block span6 offset3">
+    <div class="alert alert-success alert-block span8 offset2">
       <button type="button" class="close" data-dismiss="alert">×</button>
       <h4>
         _{MsgQueueCreatedGreeting}
-      _{MsgQueueCreatedText}
-
-<div class="row">
-  <div class="span12">
-    <h2>Add link to queue
+      <p>
+        _{MsgQueueCreatedText1}
+        <b>_{MsgQueueCreatedText2}</b> _{MsgQueueCreatedText3}<br/>
+      <p>
+        _{MsgQueueCreatedText4}
 
 <div class="row">
   <form id="addQueueForm" method="post" enctype=#{enctype}>

@@ -14,7 +14,10 @@ CreateNew: Create new queue →
 Continue: Continue
 
 QueueCreatedGreeting: Hi!
-QueueCreatedText: This is your new queue. Please save this page's unique address, since you will need it to edit the queue later.
+QueueCreatedText1: This is your new queue.
+QueueCreatedText2: Please save this page's unique address, since you will need it to edit the queue later.
+QueueCreatedText3: Anyone with this address can edit your queue.
+QueueCreatedText4: To add the feed to your podcast app or feed reader, use the feed link above. (Click on the help link in the menu if you are unsure about how to do this.) The read-only link allows people to see this page without being able to edit it.
 
 FeedListRemove: Remove
 FeedListNumItems count@Int: #{show count} #{plural count "item" "items"} in the queue
