@@ -63,7 +63,7 @@ getEditR identifier = do
     when isNew $ deleteCookie "new" "/"
 
     let showDelete = True
-    let feedid = toHtml $ queueShareId queue
+    let feedid = queueShareId queue
     let feedinfo = $(widgetFile "feedinfo")
     let itemlist = $(widgetFile "itemlist")
 
