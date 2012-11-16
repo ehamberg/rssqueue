@@ -27,3 +27,5 @@ FeedInfoFeedLink: Feed link
 FeedInfoFeedLinkHelp: The link you should add to your podcaster/feed reader. See the help page if you are unsure about how to do this.
 FeedInfoReadOnlyLink: Read-only link
 FeedInfoReadOnlyLinkHelp: Link to this queue that can be shared without giving people editing rights.
+
+HelpHeader: Help

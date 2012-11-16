@@ -36,6 +36,7 @@ library
                      Handler.View
                      Handler.Feed
                      Handler.About
+                     Handler.Help
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
