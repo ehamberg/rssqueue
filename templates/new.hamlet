@@ -1,5 +1,5 @@
 <div class="hero-unit">
-  <h2>_{MsgCreateNewTitle}
+  <h2>_{MsgNewCreateNewTitle}
   <form method=post action=@{NewR} enctype=#{enctype}>
     ^{widget}
-    <input class="btn btn-primary btn-large" type=submit value="_{MsgContinue} →">
+    <input class="btn btn-primary btn-large" type=submit value="_{MsgNewContinue} →">

@@ -17,6 +17,6 @@ $if isNew
     ^{addItemFormWidget}
     <div class="span2">
       <label class="control-label">&nbsp;
-      <input id="item_submit" class="btn btn-primary" type=submit value="_{MsgQueueAddToQueue}">
+      <input id="item_submit" class="btn btn-primary" type=submit value="_{MsgQueueAddToQueue}  ↓">
 
 ^{itemlist}
