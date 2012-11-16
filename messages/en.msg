@@ -13,6 +13,7 @@ CreateNewTitle: New RSS Queue
 CreateNew: Create new queue →
 Continue: Continue
 
+QueueAddToQueue: Add to queue ↓
 QueueCreatedGreeting: Hi!
 QueueCreatedText1: This is your new queue.
 QueueCreatedText2: Please save this page's unique address, since you will need it to edit the queue later.
@@ -21,3 +22,8 @@ QueueCreatedText4: To add the feed to your podcast app or feed reader, use the f
 
 FeedListRemove: Remove
 FeedListNumItems count@Int: #{show count} #{plural count "item" "items"} in the queue
+
+FeedInfoFeedLink: Feed link
+FeedInfoFeedLinkHelp: The link you should add to your podcaster/feed reader. See the help page if you are unsure about how to do this.
+FeedInfoReadOnlyLink: Read-only link
+FeedInfoReadOnlyLinkHelp: Link to this queue that can be shared without giving people editing rights.
