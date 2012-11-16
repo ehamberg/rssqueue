@@ -40,9 +40,9 @@ $newline never
               <li class="divider-vertical"></li>
               <li><a href=@{HomeR}>Home</a></li>
               <li class="divider-vertical"></li>
-              <li><a href=@{AboutR}>About</a></li>
-              <li class="divider-vertical"></li>
               <li><a href=@{HelpR}>Help</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href=@{AboutR}>About</a></li>
               <li class="divider-vertical"></li>
 
     <div class="container">
