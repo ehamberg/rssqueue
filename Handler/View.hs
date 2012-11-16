@@ -3,6 +3,7 @@
 module Handler.View where
 
 import Import
+import Yesod.Form.Jquery (urlJqueryJs)
 import Data.Text (append)
 import qualified Data.List (length)
 
@@ -18,6 +19,7 @@ getViewR identifier = do
     let itemlist = $(widgetFile "itemlist")
 
     defaultLayout $ do
+        lift getYesod >>= (addScriptEither . urlJqueryJs)
         lift getYesod >>= (addScriptEither . urlBootstrapJs)
         setTitle $ toHtml $ queueTitle queue `append` " – RSSQueue"
         $(widgetFile "view")
