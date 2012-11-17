@@ -1,7 +1,7 @@
 ^{feedinfo}
 
 $if isNew
-  <div class="row">
+  <div class="row-fluid">
     <div class="alert alert-success alert-block span8 offset2">
       <button type="button" class="close" data-dismiss="alert">×</button>
       <h4>
@@ -12,7 +12,7 @@ $if isNew
       <p>
         _{MsgQueueCreatedText4}
 
-<div class="row">
+<div class="row-fluid">
   <form id="addQueueForm" method="post" enctype=#{enctype}>
     ^{addItemFormWidget}
     <div class="span2">

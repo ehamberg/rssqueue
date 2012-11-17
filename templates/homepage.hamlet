@@ -8,7 +8,7 @@
       _{MsgHomeCreateNew}
 
 <!-- Instructions -->
-<div class="row">
+<div class="row-fluid">
   <div class="span4">
     <h2>1) _{MsgHomeInstructions1h}
     <p>_{MsgHomeInstructions1t}
