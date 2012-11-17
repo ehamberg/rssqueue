@@ -10,11 +10,11 @@
 <!-- Instructions -->
 <div class="row-fluid">
   <div class="span4">
-    <h2>1) _{MsgHomeInstructions1h}
+    <h2>1)&nbsp;_{MsgHomeInstructions1h}
     <p>_{MsgHomeInstructions1t}
   <div class="span4">
-    <h2>2) _{MsgHomeInstructions2h}
+    <h2>2)&nbsp;_{MsgHomeInstructions2h}
     <p>_{MsgHomeInstructions2t}
   <div class="span4">
-    <h2>3) _{MsgHomeInstructions3h}
+    <h2>3)&nbsp;_{MsgHomeInstructions3h}
     <p>_{MsgHomeInstructions3t}
