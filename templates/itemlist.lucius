@@ -34,7 +34,7 @@ p.muted {
     margin-top: 1em;
     padding-left: 1em;
     padding-right: 1em;
-    background-color: rgb(220,220,220);
+    background-color: #{greybg};
     border-radius: 6px;
 }
 

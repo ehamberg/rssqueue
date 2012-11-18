@@ -1,6 +1,6 @@
 #add_item {
   border-radius: 6px;
-  background-color: rgb(249,249,249);
+  background-color: #{greybg};
   width: 100%;
   padding: 1em;
 }

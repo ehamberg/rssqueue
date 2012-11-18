@@ -9,6 +9,7 @@ module Import
     , module Data.Monoid
     , module Control.Applicative
     , Text
+    , greybg
     , getIpAddr
     , createIdentifiers
     , getResponseHeaders
@@ -37,6 +38,10 @@ instance ToJavascript Identifier where
 
 instance ToMarkup Identifier where
     toMarkup (Identifier t) = toMarkup t
+
+-- CSS properties
+greybg :: Text
+greybg = "rgb(249,249,249)"
 
 -- Utility functions
 
