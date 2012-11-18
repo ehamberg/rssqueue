@@ -59,4 +59,5 @@ HelpAddingYourQueueText: On the top of your queue's page there is a feed link. T
 # About page
 ################################################################################
 
-About: This site is under development. For questions, send an email to ehambergαgmail.com.
+AboutHeader: About RSSQueue
+AboutText: This site is under development. For questions, send an email to ehambergαgmail.com.
