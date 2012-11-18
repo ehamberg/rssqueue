@@ -1,11 +1,11 @@
-<div class="row-fluid">
+<div class="row">
   <div class="span12">
     <h2>
       _{MsgHelpGettingStartedHeader}
     <p>
       _{MsgHelpGettingStartedText}
 
-<div class="row-fluid">
+<div class="row">
   <div class="span12">
     <h2>
       _{MsgHelpPodcastAppsHeader}
@@ -40,7 +40,7 @@
             <a href="http://www.windowsphone.com/en-us/store/app/podcasts/ff0796f0-a6e2-df11-a844-00237de2db9e">
               PODCASTS!
 
-<div class="row-fluid">
+<div class="row">
   <div class="span12">
     <h2>
       _{MsgHelpAddingYourQueueHeader}
