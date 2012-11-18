@@ -32,7 +32,7 @@ $(document).ready(function() {
                        +'</td>'
                        +'</tr>';
 
-                   $(newRow).hide().prependTo('#item_list').fadeIn("slow");
+                   $(newRow).hide().prependTo('#item_table').fadeIn("slow");
                    modifyNumItems(1);
                    $("#item_title").val('');
                    $("#item_url").val('');

@@ -1,7 +1,7 @@
 <div id="item_list">
   <div class="row-fluid">
     <div class="span12">
-      <table id="item_list" class="table">
+      <table id="item_table" class="table">
         <thead>
           <tr>
             <th id="num_items" :showDelete:colspan="2">
