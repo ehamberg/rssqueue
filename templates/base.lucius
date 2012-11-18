@@ -1,0 +1,6 @@
+.text {
+  margin: 0 auto;
+  float: none;
+  width: 100%;
+  max-width: 12cm;
+}

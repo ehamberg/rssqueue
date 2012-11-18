@@ -95,6 +95,7 @@ instance Yesod RSSQueueApp where
 
         pc <- widgetToPageContent $ do
             $(widgetFile "normalize")
+            $(widgetFile "base")
             addStylesheetRemote $ "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css"
             addScriptRemote $ "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"
             addScriptRemote $ "//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"
