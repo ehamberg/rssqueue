@@ -7,7 +7,7 @@
           _{MsgFeedInfoFeedLink}: <a href=@{FeedR feedid}>@{FeedR feedid}</a>
           <abbr title=_{MsgFeedInfoFeedLinkHelp}>
             <i class="icon-question-sign"></i>
-        $if showDelete
+        $if isEditView
           <li>
             _{MsgFeedInfoReadOnlyLink}: <a href=@{ViewR feedid}>@{ViewR feedid}</a>
             <abbr title=_{MsgFeedInfoReadOnlyLinkHelp}>

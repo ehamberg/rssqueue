@@ -12,7 +12,7 @@ getViewR identifier = do
 
     items <- runDB $ selectList [QueueItemQueueId ==. key] [Desc QueueItemCreated]
 
-    let showDelete = False
+    let isEditView = False
     let feedid = identifier
     let feedinfo = $(widgetFile "feedinfo")
     let itemlist = $(widgetFile "itemlist")

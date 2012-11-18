@@ -61,7 +61,7 @@ getEditR identifier = do
     -- delete “new” cookie
     when isNew $ deleteCookie "new" "/"
 
-    let showDelete = True
+    let isEditView = True
     let feedid = queueShareId queue
     let feedinfo = $(widgetFile "feedinfo")
     let itemlist = $(widgetFile "itemlist")

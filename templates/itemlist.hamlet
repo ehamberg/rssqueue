@@ -4,7 +4,7 @@
       <table id="item_table" class="table">
         <thead>
           <tr>
-            <th id="num_items" :showDelete:colspan="2">
+            <th id="num_items" :isEditView:colspan="2">
               _{MsgFeedListNumItems $ Data.List.length items}
         <tbody>
           $forall Entity itemId queue_item <- items
@@ -15,7 +15,7 @@
                     #{queueItemTitle queue_item}</span>
                 <br>
                 <p class="muted">#{queueItemUri queue_item}
-              $if showDelete
+              $if isEditView
                 <td>
                   <div class="btn-group pull-right">
                     <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
