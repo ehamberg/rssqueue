@@ -1,48 +1,51 @@
 <div class="row">
   <div class="span12">
-    <h2>
-      _{MsgHelpGettingStartedHeader}
-    <p>
-      _{MsgHelpGettingStartedText}
+    <div class="text">
+      <h2>
+        _{MsgHelpGettingStartedHeader}
+      <p>
+        _{MsgHelpGettingStartedText}
 
 <div class="row">
   <div class="span12">
-    <h2>
-      _{MsgHelpPodcastAppsHeader}
-    <p>
-      _{MsgHelpPodcastAppsText}
-    <ul>
-      <li>iPhone/iPad
-        <ul>
-          <li>
-            <a href="https://itunes.apple.com/app/downcast/id393858566">
-              Downcast (iPhone/iPad)
-          <li>
-            <a href="https://itunes.apple.com/app/instacast/id420368235">
-              Instacast (iPhone)
-          <li>
-            <a href="https://itunes.apple.com/app/instacast-hd/id478853570">
-              Instacast HD (iPad)
-          <li>
-            <a href="https://itunes.apple.com/app/podcasts/id525463029">
-              Apple Podcasts (iPhone/iPad)
-      <li>Android
-        <ul>
-          <li>
-            <a href="https://play.google.com/store/apps/details?id=com.snoggdoggler.android.applications.doggcatcher.v1_0">
-              Doggcatcher
-          <li>
-            <a href="https://play.google.com/store/apps/details?id=ait.podka">
-              Podkicker Podcast Player
-      <li>Windows Phone
-        <ul>
-          <li>
-            <a href="http://www.windowsphone.com/en-us/store/app/podcasts/ff0796f0-a6e2-df11-a844-00237de2db9e">
-              PODCASTS!
+    <div class="text">
+      <h2>
+        _{MsgHelpPodcastAppsHeader}
+      <p>
+        _{MsgHelpPodcastAppsText}
+      <ul>
+        <li>iOS
+          <ul>
+            <li>
+              <a href="https://itunes.apple.com/app/downcast/id393858566">
+                Downcast (iPhone/iPad)
+            <li>
+              <a href="https://itunes.apple.com/app/instacast/id420368235">
+                Instacast (iPhone)
+            <li>
+              <a href="https://itunes.apple.com/app/instacast-hd/id478853570">
+                Instacast HD (iPad)
+            <li>
+              <a href="https://itunes.apple.com/app/podcasts/id525463029">
+                Apple Podcasts (iPhone/iPad)
+        <li>Android
+          <ul>
+            <li>
+              <a href="https://play.google.com/store/apps/details?id=com.snoggdoggler.android.applications.doggcatcher.v1_0">
+                Doggcatcher
+            <li>
+              <a href="https://play.google.com/store/apps/details?id=ait.podka">
+                Podkicker Podcast Player
+        <li>Windows Phone
+          <ul>
+            <li>
+              <a href="http://www.windowsphone.com/en-us/store/app/podcasts/ff0796f0-a6e2-df11-a844-00237de2db9e">
+                PODCASTS!
 
 <div class="row">
   <div class="span12">
-    <h2>
-      _{MsgHelpAddingYourQueueHeader}
-    <p>
-      _{MsgHelpAddingYourQueueText}
+    <div class="text">
+      <h2>
+        _{MsgHelpAddingYourQueueHeader}
+      <p>
+        _{MsgHelpAddingYourQueueText}
