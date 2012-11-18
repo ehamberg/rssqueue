@@ -19,19 +19,7 @@ renderBootstrap' aform fragment = do
     let views = views' []
         has (Just _) = True
         has Nothing  = False
-    let widget = [whamlet|
-$newline never
-\#{fragment}
-$forall view <- views
-    <div .control-group .clearfix .span5 :fvRequired view:.required :not $ fvRequired view:.optional :has $ fvErrors view:.error>
-        <label .control-label for=#{fvId view}>#{fvLabel view}
-        <div .controls .input>
-            ^{fvInput view}
-            $maybe tt <- fvTooltip view
-                <span .help-block>#{tt}
-            $maybe err <- fvErrors view
-                <span .help-block>#{err}
-|]
+    let widget = $(widgetFile "newitemform")
     return (res, widget)
 
 addItemForm :: Html -> MForm RSSQueueApp RSSQueueApp (FormResult (Text,Text), Widget)
