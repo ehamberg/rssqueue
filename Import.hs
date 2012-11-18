@@ -9,7 +9,6 @@ module Import
     , module Data.Monoid
     , module Control.Applicative
     , Text
-    , urlBootstrapJs
     , getIpAddr
     , createIdentifiers
     , getResponseHeaders
@@ -38,10 +37,6 @@ instance ToJavascript Identifier where
 
 instance ToMarkup Identifier where
     toMarkup (Identifier t) = toMarkup t
-
--- central bootstrap url
-urlBootstrapJs :: a -> Either (Route a) Text
-urlBootstrapJs _ = Right "//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"
 
 -- Utility functions
 

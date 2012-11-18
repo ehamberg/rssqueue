@@ -3,7 +3,6 @@
 module Handler.Edit where
 
 import Import hiding (length)
-import Yesod.Form.Jquery (urlJqueryJs)
 import Data.Time.Clock (getCurrentTime)
 import Network.Wai (remoteHost)
 import Data.Char (isAlphaNum)
@@ -68,8 +67,6 @@ getEditR identifier = do
     let itemlist = $(widgetFile "itemlist")
 
     defaultLayout $ do
-        lift getYesod >>= (addScriptEither . urlJqueryJs)
-        lift getYesod >>= (addScriptEither . urlBootstrapJs)
         setTitle $ toHtml $ queueTitle queue `append` " – RSSQueue"
         $(widgetFile "edit")
 
