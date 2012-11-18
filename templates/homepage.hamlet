@@ -1,11 +1,14 @@
 <!-- Title and welcome message -->
 <div class="hero-unit">
-  <img style="float: left; padding-right: 2em;" src=@{StaticR img_logo_png}>
-  <h1>_{MsgHomeWelcome}
-  <p>_{MsgHomeIntro}
-  <p>
-    <a class="btn btn-primary btn-large" href="@{NewR}">
-      _{MsgHomeCreateNew}
+  <div class="row-fluid">
+    <div span="span4">
+      <img id="logoimg" class="pull-left" src=@{StaticR img_logo_png}>
+    <div span="span8">
+      <h1>_{MsgHomeWelcome}
+      <p>_{MsgHomeIntro}
+      <p>
+        <a class="btn btn-primary btn-large" href="@{NewR}">
+          _{MsgHomeCreateNew}
 
 <!-- Instructions -->
 <div class="row">
