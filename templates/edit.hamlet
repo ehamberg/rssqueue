@@ -12,11 +12,12 @@ $if isNew
       <p>
         _{MsgQueueCreatedText4}
 
-<div class="row">
-  <form id="addQueueForm" method="post" enctype=#{enctype}>
-    ^{addItemFormWidget}
-    <div class="span2">
-      <label class="control-label">&nbsp;
-      <input id="item_submit" class="btn btn-primary" type=submit value="_{MsgQueueAddToQueue}  ↓">
+<div id="new_item_form">
+  <div class="row-fluid">
+    <form id="addQueueForm" method="post" enctype=#{enctype}>
+      ^{addItemFormWidget}
+      <div class="span2">
+        <label class="control-label">&nbsp;
+        <input id="item_submit" class="btn btn-primary" type=submit value="_{MsgQueueAddToQueue}  ↓">
 
 ^{itemlist}

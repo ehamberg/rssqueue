@@ -25,7 +25,7 @@ NewContinue: Continue
 # Edit page
 ################################################################################
 
-QueueAddToQueue: Add to queue
+QueueAddToQueue: Add
 QueueCreatedGreeting: Hi!
 QueueCreatedText1: This is your new queue.
 QueueCreatedText2: Please save this page's unique address, since you will need it to edit the queue later.

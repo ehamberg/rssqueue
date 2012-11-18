@@ -4,3 +4,10 @@
   width: 100%;
   padding: 1em;
 }
+
+#new_item_form {
+  width: 100%;
+  max-width: 18cm;
+  margin: 0 auto;
+  float: none;
+}

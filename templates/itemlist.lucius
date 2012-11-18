@@ -38,6 +38,10 @@ p.muted {
     padding-right: 1em;
     background-color: #{greybg};
     border-radius: 6px;
+    width: 100%;
+    max-width: 18cm;
+    margin: 0 auto;
+    float: none;
 }
 
 #item_title, #item_url, #item_submit {
