@@ -1,14 +1,14 @@
-<!-- Title and welcome message -->
+<!-- Title and welcome message for desktop machines/tablets -->
 <div class="hero-unit">
   <div class="row-fluid">
-    <div span="span4">
-      <img id="logoimg" class="pull-left" src=@{StaticR img_logo_png}>
-    <div span="span8">
+    <div class="span4">
+      <img id="logoimg" src=@{StaticR img_logo_png}>
+    <div class="span8">
       <h1>_{MsgHomeWelcome}
       <p>_{MsgHomeIntro}
       <p>
         <a class="btn btn-primary btn-large" href="@{NewR}">
-          _{MsgHomeCreateNew}
+          _{MsgHomeCreateNew} →
 
 <!-- Instructions -->
 <div class="row">

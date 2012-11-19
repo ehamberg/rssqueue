@@ -12,7 +12,7 @@ HomeInstructions2t: Populate your new queue with links to videos or audio files 
 HomeInstructions3h: Synchronize!
 HomeInstructions3t: Add the feed to your feed reader and live happily ever after. When you add new items they are automatically synced to your phone/tablet/computer.
 
-HomeCreateNew: New RSS Queue
+HomeCreateNew: Create RSS Queue
 
 ################################################################################
 # New page
