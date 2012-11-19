@@ -40,7 +40,7 @@ FeedListRemove: Remove
 FeedListNumItems count@Int: #{show count} #{plural count "item" "items"} in the queue
 
 FeedInfoFeedLink: Feed link
-FeedInfoFeedLinkHelp: The link you should add to your podcaster/feed reader. See the help page if you are unsure about how to do this.
+FeedInfoFeedLinkHelp: The link you should add to your podcast app/feed reader. See the help page if you are unsure about how to do this.
 FeedInfoReadOnlyLink: Read-only link
 FeedInfoReadOnlyLinkHelp: Link to this queue that can be shared without giving people editing rights.
 
