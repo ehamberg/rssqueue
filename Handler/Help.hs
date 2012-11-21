@@ -4,5 +4,5 @@ import Import
 
 getHelpR :: Handler RepHtml
 getHelpR = defaultLayout $ do
-    setTitle $ "Help – RSSQueue"
+    setTitle "Help – RSSQueue"
     $(widgetFile "help")
