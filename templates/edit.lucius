@@ -11,3 +11,8 @@
   margin: 0 auto;
   float: none;
 }
+
+#newTitle {
+  height: 35px;
+  width: 80%;
+}

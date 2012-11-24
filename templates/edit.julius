@@ -1,4 +1,43 @@
+function restoreTitle(title) {
+  // change back to text and re-enable click event
+  $("#queueTitle").text(title);
+  $("#queueTitle").html($("#queueTitle").html() + ' <i class="icon-pencil"></i>');
+  $("#queueTitle").on('click.rssqueue', addTitleField);
+}
+
+function addTitleField() {
+  var currTitle = $.trim($("#queueTitle").text());
+
+  $("#queueTitle").html('<input type="text" id="newTitle" value="'+currTitle+'">');
+  $("#queueTitle").off('click.rssqueue');
+
+  $("#newTitle").val(currTitle);
+  $("#newTitle").focus();
+
+  $("#newTitle").on('keyup.rssqueue', function(e) {
+    if (e.keyCode == 13) { // enter
+      var newTitle = $.trim($("#newTitle").val());
+
+      restoreTitle(newTitle);
+
+      if (currTitle == newTitle) return;
+
+      $.ajax({
+        type: 'POST',
+        url: '/edit/#{identifier}/changeTitle/' + newTitle,
+        error: function(jqXHR, textStatus, errorThrown) { alert(textStatus); }
+      });
+    } else if (e.keyCode == 27) { // escape
+      restoreTitle(currTitle);
+    }
+  });
+}
+
 $(document).ready(function() {
+  $("#queueTitle").on('click.rssqueue', function() {
+    addTitleField();
+  });
+
   $('#addQueueForm').submit(function() {
     $.ajax({
       type: 'POST',
@@ -39,7 +78,7 @@ $(document).ready(function() {
                  }
                },
       error: function(jqXHR, textStatus, errorThrown) {
-               alert('error');
+               alert(textStatus);
              }
     });
 

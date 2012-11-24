@@ -11,6 +11,10 @@ div.feedinfo h1 {
   margin-bottom: 0.5em;
 }
 
+.icon-pencil {
+  vertical-align: middle;
+}
+
 div.feedinfo ul {
   list-style-type: none;
 }

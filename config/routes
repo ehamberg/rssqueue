@@ -3,11 +3,12 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/                                       HomeR       GET
-/new                                    NewR        GET POST
-/edit/#Identifier                       EditR       GET POST
-/edit/#Identifier/delete/#QueueItemId   DeleteItemR DELETE
-/view/#Identifier                       ViewR       GET
-/feed/#Identifier                       FeedR       GET
-/about                                  AboutR      GET
-/help                                   HelpR       GET
+/                                     HomeR             GET
+/new                                  NewR              GET POST
+/edit/#Identifier                     EditR             GET POST
+/edit/#Identifier/delete/#QueueItemId DeleteItemR       DELETE
+/edit/#Identifier/changeTitle/#Text   ChangeQueueTitleR POST
+/view/#Identifier                     ViewR             GET
+/feed/#Identifier                     FeedR             GET
+/about                                AboutR            GET
+/help                                 HelpR             GET

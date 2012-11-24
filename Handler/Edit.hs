@@ -100,6 +100,12 @@ postEditR identifier@(Identifier i) = do
               runDB $ update item [QueueItemLength =. len'
                                   ,QueueItemType   =. typ']
 
+postChangeQueueTitleR :: Identifier -> Text -> Handler RepJson
+postChangeQueueTitleR feedId newTitle = do
+    runDB $ do
+      Entity queue _ <- getBy404 $ UniqueIdentifier feedId
+      update queue [QueueTitle =. newTitle]
+    jsonToRepJson $ String "changed"
 
 deleteDeleteItemR :: Identifier -> QueueItemId -> Handler RepJson
 deleteDeleteItemR feedId itemId = do
