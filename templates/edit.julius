@@ -43,6 +43,11 @@ function appendToQueue(response) {
   if (response == "error") {
     alert(response);
   } else {
+    // abort if title or url is empty
+    if ($("#item_url").val().length == 0 || $("#item_title").val().length == 0) {
+      return;
+	}
+
     var url = $("#item_url").val();
 
     var delete_url = '/edit/'+response[0]+'/delete/'+response[1];
