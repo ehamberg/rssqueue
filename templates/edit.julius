@@ -18,6 +18,12 @@ function addTitleField() {
     if (e.keyCode == 13) { // enter
       var newTitle = $.trim($("#newTitle").val());
 
+      // don't allow an empty title
+      if (newTitle.length == 0) {
+        restoreTitle(currTitle);
+        return;
+      }
+
       restoreTitle(newTitle);
 
       if (currTitle == newTitle) return;
