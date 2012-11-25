@@ -16,3 +16,10 @@
   height: 35px;
   width: 80%;
 }
+
+#newqueuemessage {
+  width: 100%;
+  max-width: 16cm;
+  margin: 1em auto;
+  float: none;
+}

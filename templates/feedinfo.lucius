@@ -1,20 +1,23 @@
-div.feedinfo {
+#feedinfo {
   border-radius: 6px;
   background-color: #{greybg};
   width: 100%;
   padding: 1em;
   margin-bottom: 1em;
+  max-width: 18cm;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+
+  .icon-pencil {
+    vertical-align: middle;
+  }
+
+  ul {
+    list-style-type: none;
+  }
 }
 
-div.feedinfo h1 {
-  text-align: center;
-  margin-bottom: 0.5em;
-}
-
-.icon-pencil {
-  vertical-align: middle;
-}
-
-div.feedinfo ul {
-  list-style-type: none;
-}
