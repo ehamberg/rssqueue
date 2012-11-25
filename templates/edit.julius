@@ -33,6 +33,41 @@ function addTitleField() {
   });
 }
 
+function appendToQueue(response) {
+  if (response == "error") {
+    alert(response);
+  } else {
+    var url = $("#item_url").val();
+
+    var delete_url = '/edit/'+response[0]+'/delete/'+response[1];
+
+    if (!RegExp(/^https?:\/\//).test(url)) {
+      url = "http://" + url;
+    }
+
+    var newRow = '<tr><td>'
+        +'<span class="item_title"><a href="'+url+'">'
+        +$("#item_title").val()+'</a></span><br><p class="muted">'+url+'</p></td>'
+        +'<td>'
+        +'  <div class="btn-group pull-right">'
+        +'    <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href-"#">'
+        +'      <i class="icon-trash icon-white"></i>'
+        +'      <span class="caret"></span>'
+        +'    </button>'
+        +'    <ul class="dropdown-menu">'
+        +'      <li><a href="#" onclick="javascript:deleteRequest(\''+delete_url+'\');$(this).closest(\'tr\').fadeOut(function() { $(this).closest(\'tr\').remove(); });">Remove</a></li>'
+        +'    </ul>'
+        +'  </div>'
+        +'</td>'
+        +'</tr>';
+
+    $(newRow).hide().prependTo('#item_table').fadeIn("slow");
+    modifyNumItems(1);
+    $("#item_title").val('');
+    $("#item_url").val('');
+  }
+}
+
 $(document).ready(function() {
   $("#queueTitle").on('click.rssqueue', function() {
     addTitleField();
@@ -43,40 +78,7 @@ $(document).ready(function() {
       type: 'POST',
       url: '/edit/#{identifier}',
       data: $('#addQueueForm').serialize(),
-      success: function(response) {
-                 if (response == "error") {
-                   alert(response);
-                 } else {
-                   var url = $("#item_url").val();
-
-                   var delete_url = '/edit/'+response[0]+'/delete/'+response[1];
-
-                   if (!RegExp(/^https?:\/\//).test(url)) {
-                     url = "http://" + url;
-                   }
-
-                   var newRow = '<tr><td>'
-                       +'<span class="item_title"><a href="'+url+'">'
-                       +$("#item_title").val()+'</a></span><br><p class="muted">'+url+'</p></td>'
-                       +'<td>'
-                       +'  <div class="btn-group pull-right">'
-                       +'    <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href-"#">'
-                       +'      <i class="icon-trash icon-white"></i>'
-                       +'      <span class="caret"></span>'
-                       +'    </button>'
-                       +'    <ul class="dropdown-menu">'
-                       +'      <li><a href="#" onclick="javascript:deleteRequest(\''+delete_url+'\');$(this).closest(\'tr\').fadeOut(function() { $(this).closest(\'tr\').remove(); });">Remove</a></li>'
-                       +'    </ul>'
-                       +'  </div>'
-                       +'</td>'
-                       +'</tr>';
-
-                   $(newRow).hide().prependTo('#item_table').fadeIn("slow");
-                   modifyNumItems(1);
-                   $("#item_title").val('');
-                   $("#item_url").val('');
-                 }
-               },
+      success: appendToQueue,
       error: function(jqXHR, textStatus, errorThrown) {
                alert(textStatus);
              }
