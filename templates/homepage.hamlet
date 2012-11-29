@@ -1,18 +1,8 @@
 <!-- Title and welcome message for desktop machines/tablets -->
-<div class="hero-unit">
-  <div class="row-fluid">
-    <div class="span4">
-      <img id="logoimg" src=@{StaticR img_logo_png}>
-    <div class="span8">
-
-      <!-- Use a larger header on desktops and tablets-->
-      <h1 class="visible-desktop visible-tablet">_{MsgHomeWelcome}
-      <h2 class="visible-phone">_{MsgHomeWelcome}
-
-      <p>_{MsgHomeIntro}
-      <p>
-        <a class="btn btn-primary btn-large" href="@{NewR}">
-          _{MsgHomeCreateNew} →
+<div class="hero-unit visible-desktop visible-tablet">
+  ^{welcomeWidget}
+<div class="visible-phone">
+  ^{welcomeWidget}
 
 <!-- Instructions -->
 <div class="row">
