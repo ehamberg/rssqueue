@@ -2,3 +2,9 @@
     padding-top: 1em;
     padding-right: 1em;
 }
+
+#welcomephone {
+  background-color: rgb(238,238,238);
+  border-radius: 6px;
+  padding: 0 8px;
+}

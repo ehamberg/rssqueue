@@ -1,7 +1,7 @@
 <!-- Title and welcome message for desktop machines/tablets -->
 <div class="hero-unit visible-desktop visible-tablet">
   ^{welcomeWidget}
-<div class="visible-phone">
+<div id="welcomephone" class="visible-phone">
   ^{welcomeWidget}
 
 <!-- Instructions -->
