@@ -10,6 +10,19 @@
   <div class="span12">
     <div class="text">
       <h2>
+        _{MsgHelpExampleQueuesHeader}:
+      <ul>
+        <li>
+          <a href="/view/gpmUe">Channel 9: Javascript Fundamentals</a>
+        <li>
+          <a href="/view/8mrFN">Channel 9: Dr. Don Syme – Introduction to F#</a>
+        <li>
+          <a href="/view/Tbhn7">Channel 9: Stephan T Lavavej – Advanced STL</a>
+
+<div class="row">
+  <div class="span12">
+    <div class="text">
+      <h2>
         _{MsgHelpPodcastAppsHeader}
       <p>
         _{MsgHelpPodcastAppsText}

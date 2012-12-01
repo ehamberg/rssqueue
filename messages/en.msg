@@ -50,6 +50,7 @@ FeedInfoReadOnlyLinkHelp: Link to this queue that can be shared without giving p
 
 HelpGettingStartedHeader: Getting Started
 HelpGettingStartedText: After creating your own read/watch later queue you can fill it with content by providing a title and an address. You can add links to web pages or to media files. If you add your queue's feed url to a podcast app and you add direct links to audio or video files you will be able to download the files automatically to your phone or tablet as you add links. For links to web pages, all fead readers should work.
+HelpExampleQueuesHeader: Example Queues
 HelpPodcastAppsHeader: Podcast apps
 HelpPodcastAppsText: Here are some podcast apps you can use to subscribe to your queue:
 HelpAddingYourQueueHeader: Adding your queue to your podcast app
