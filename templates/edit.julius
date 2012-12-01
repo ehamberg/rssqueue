@@ -30,7 +30,7 @@ function addTitleField() {
 
       $.ajax({
         type: 'POST',
-        url: '/edit/#{identifier}/changeTitle/' + newTitle,
+        url: '/edit/#{identifier}/changeTitle/' + encodeURIComponent(newTitle),
         error: function(jqXHR, textStatus, errorThrown) { alert(textStatus); }
       });
     } else if (e.keyCode == 27) { // escape
