@@ -15,5 +15,4 @@ QueueItem
     ipAddress  Text
     length     Int64 Maybe
     type       Text Maybe
-    UniqueQueueItem queueId uri
     deriving Show
