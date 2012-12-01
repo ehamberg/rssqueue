@@ -56,7 +56,7 @@ HelpExampleQueuesHeader: Example Queues
 HelpPodcastAppsHeader: Podcast apps
 HelpPodcastAppsText: Here are some podcast apps you can use to subscribe to your queue:
 HelpAddingYourQueueHeader: Adding your queue to your podcast app
-HelpAddingYourQueueText: On the top of your queue's page there is a feed link. This is the address that should be added to your podcast app. The way this is done varies form app to app. Some will let you specify an url directly while in other apps you will have to enter the address as a search term. To find out how this is done for your podcast app, please consult its documentation.
+HelpAddingYourQueueText: On the top of your queue's page there is a feed link. This is the address that should be added to your podcast app. The way this is done varies from app to app. Some will let you specify a url directly while in other apps you will have to enter the address as a search term. To find out how this is done for your podcast app, please consult its documentation.
 
 ################################################################################
 # About page
