@@ -8,3 +8,17 @@
   border-radius: 6px;
   padding: 0 8px;
 }
+
+div.instructionsbox {
+  background-color: rgb(238,238,238);
+  border-radius: 6px;
+  padding: 0 8px;
+  margin-bottom: 10px;
+
+}
+
+@media only screen and (min-width: 768px){
+  div.instructionsbox {
+    height: 13em;
+  }
+}

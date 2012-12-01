@@ -5,13 +5,17 @@
   ^{welcomeWidget}
 
 <!-- Instructions -->
-<div class="row">
-  <div class="span4">
-    <h2>1)&nbsp;_{MsgHomeInstructions1h}
+<div class="row-fluid">
+  <div class="span12">
+    <h2 style="text-align: center;">
+      ☆ Easy as 1-2-3:
+<div class="row-fluid">
+  <div class="instructionsbox span4">
+    <h3>1)&nbsp;_{MsgHomeInstructions1h}
     <p>_{MsgHomeInstructions1t}
-  <div class="span4">
-    <h2>2)&nbsp;_{MsgHomeInstructions2h}
+  <div class="instructionsbox span4">
+    <h3>2)&nbsp;_{MsgHomeInstructions2h}
     <p>_{MsgHomeInstructions2t}
-  <div class="span4">
-    <h2>3)&nbsp;_{MsgHomeInstructions3h}
+  <div class="instructionsbox span4">
+    <h3>3)&nbsp;_{MsgHomeInstructions3h}
     <p>_{MsgHomeInstructions3t}
