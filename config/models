@@ -2,7 +2,7 @@ Queue
     identifier       Identifier
     shareId          Identifier
     title            Text
-    public           Bool default=0
+    public           Bool default=false
     UniqueIdentifier identifier
     UniqueShareId    shareId
     deriving Show

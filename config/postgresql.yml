@@ -1,20 +1,23 @@
 Default: &defaults
-  database: RSSQueue.sqlite3
+  user: rssqueue
+  password: rssqueue
+  host: localhost
+  port: 5432
+  database: rssqueue
   poolsize: 10
 
 Development:
   <<: *defaults
 
 Testing:
-  database: RSSQueue_test.sqlite3
+  database: rssqueue_test
   <<: *defaults
 
 Staging:
-  database: RSSQueue_staging.sqlite3
+  database: rssqueue_staging
   poolsize: 100
   <<: *defaults
 
 Production:
-  database: RSSQueue_production.sqlite3
   poolsize: 100
   <<: *defaults
