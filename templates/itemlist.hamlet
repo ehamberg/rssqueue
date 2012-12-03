@@ -16,7 +16,7 @@
                 <br>
                 <p class="muted">#{queueItemUri queue_item}
                   $if isEditView
-                    \ (#{fromMaybe "" $ queueItemType queue_item})
+                    \ (#{fromMaybe "?" $ queueItemType queue_item})
               $if isEditView
                 <td>
                   <div class="btn-group pull-right">
