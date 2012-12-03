@@ -31,7 +31,7 @@ addItemForm = renderBootstrap' $ (,)
         looksLikeUrl u = length u >= 4 && isAlphaNum (head u) && isJust (find (=='.') u)
         validateURL u
           | looksLikeUrl u = Right u
-          | otherwise      = Left ("That doesn't look like an URL." :: Text)
+          | otherwise      = Left ("That doesn't look like a URL." :: Text)
 
 getEditR :: Identifier -> Handler RepHtml
 getEditR identifier = do
