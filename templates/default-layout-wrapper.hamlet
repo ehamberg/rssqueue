@@ -19,6 +19,10 @@ $newline never
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/img/touch-icon-114x114.png"} />
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/img/touch-icon-144x144.png"} />
 
+    <link rel="icon" type="image/png" sizes="128x128" href="/static/img/favicon128.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/static/img/favicon64.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon32.png" />
+
     ^{pageHead pc}
 
     <style type="text/css">
