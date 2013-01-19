@@ -4,13 +4,13 @@ license:           BSD3
 license-file:      LICENSE
 author:            Erlend Hamberg
 maintainer:        Erlend Hamberg
-synopsis:          The greatest Yesod web application ever.
-description:       I'm sure you can say something clever here if you try.
+synopsis:          Podcast feed creator
+description:       Simple web app for creating and curating podcast/RSS feeds
 category:          Web
 stability:         Experimental
 cabal-version:     >= 1.8
 build-type:        Simple
-homepage:          http://RSSQueue.yesodweb.com/
+homepage:          http://rssqueue.com/
 
 Flag dev
     Description:   Turn on development settings, like auto-reload templates.
