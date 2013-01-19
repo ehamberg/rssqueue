@@ -12,6 +12,7 @@ module PodcastFeed
 
 import Import
 import FeedTypes
+import Yesod.Core (Route)
 import qualified Data.ByteString.Char8 as S8
 import Data.Text (pack)
 import Data.Text.Lazy (toStrict)

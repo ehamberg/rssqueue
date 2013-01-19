@@ -1,24 +1,13 @@
-module Foundation
-    ( RSSQueueApp (..)
-    , Route (..)
-    , RSSQueueAppMessage (..)
-    , resourcesRSSQueueApp
-    , Handler
-    , Widget
-    , Form
-    , module Settings
-    , module Model
-    , getExtra
-    ) where
+module Foundation where
 
 import Prelude
 import Yesod
 import Yesod.Static
 import Yesod.Default.Config
 import Yesod.Default.Util (addStaticContentExternal)
-import Yesod.Form.Jquery (YesodJquery)
 import Network.HTTP.Conduit (Manager)
 import qualified Settings
+import Settings.Development (development)
 import qualified Database.Persist.Store
 import Database.Persist.GenericSql
 import Settings (widgetFile, Extra (..))
@@ -48,8 +37,6 @@ plural _ _ y = y
 -- Set up i18n messages. See the message folder.
 mkMessage "RSSQueueApp" "messages" "en"
 
-instance YesodJquery RSSQueueApp
-
 -- This is where we define all of the routes in our application. For a full
 -- explanation of the syntax, please see:
 -- http://www.yesodweb.com/book/handler
@@ -59,13 +46,13 @@ instance YesodJquery RSSQueueApp
 -- * Creates the route datatype AppRoute. Every valid URL in your
 --   application can be represented as a value of this type.
 -- * Creates the associated type:
---       type instance Route RSSQueueApp = AppRoute
+--       type instance Route App = AppRoute
 -- * Creates the value resourcesApp which contains information on the
 --   resources declared below. This is used in Handler.hs by the call to
 --   mkYesodDispatch
 --
 -- What this function does *not* do is create a YesodSite instance for
--- RSSQueueApp. Creating that instance requires all of the handler functions
+-- App. Creating that instance requires all of the handler functions
 -- for our application to be in scope. However, the handler functions
 -- usually require access to the AppRoute datatype. Therefore, we
 -- split these actions into two functions and place them in separate files.
@@ -82,7 +69,9 @@ instance Yesod RSSQueueApp where
     -- default session idle timeout is 120 minutes
     makeSessionBackend _ = do
         key <- getKey "config/client_session_key.aes"
-        return . Just $ clientSessionBackend key 120
+        let timeout = 120 * 60 -- 120 minutes
+        (getCachedDate, _closeDateCache) <- clientSessionDateCacher timeout
+        return . Just $ clientSessionBackend2 key getCachedDate
 
     defaultLayout widget = do
         master <- getYesod
@@ -114,10 +103,21 @@ instance Yesod RSSQueueApp where
     -- and names them based on a hash of their content. This allows
     -- expiration dates to be set far in the future without worry of
     -- users receiving stale content.
-    addStaticContent = addStaticContentExternal minifym base64md5 Settings.staticDir (StaticR . flip StaticRoute [])
+    addStaticContent =
+        addStaticContentExternal minifym genFileName Settings.staticDir (StaticR . flip StaticRoute [])
+      where
+        -- Generate a unique filename based on the content itself
+        genFileName lbs
+            | development = "autogen-" ++ base64md5 lbs
+            | otherwise   = base64md5 lbs
 
     -- Place Javascript at bottom of the body tag so the rest of the page loads first
     jsLoader _ = BottomOfBody
+
+    -- What messages should be logged. The following includes all messages when
+    -- in development, and warnings and errors in production.
+    shouldLog _ _source level =
+        development || level == LevelWarn || level == LevelError
 
 -- How to run database actions.
 instance YesodPersist RSSQueueApp where

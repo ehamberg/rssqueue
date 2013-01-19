@@ -3,14 +3,7 @@
 -- In addition, you can configure a number of different aspects of Yesod
 -- by overriding methods in the Yesod typeclass. That instance is
 -- declared in the Foundation.hs file.
-module Settings
-    ( widgetFile
-    , PersistConfig
-    , staticRoot
-    , staticDir
-    , Extra (..)
-    , parseExtra
-    ) where
+module Settings where
 
 import Prelude
 import Text.Shakespeare.Text (st)
@@ -53,6 +46,10 @@ staticRoot conf = [st|#{appRoot conf}/static|]
 
 -- | Settings for 'widgetFile', such as which template languages to support and
 -- default Hamlet settings.
+--
+-- For more information on modifying behavior, see:
+--
+-- https://github.com/yesodweb/yesod/wiki/Overriding-widgetFile
 widgetFileSettings :: WidgetFileSettings
 widgetFileSettings = def
     { wfsHamletSettings = defaultHamletSettings

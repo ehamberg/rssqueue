@@ -1,28 +1,23 @@
 {-# Language ScopedTypeVariables #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Import
-    ( module Prelude
-    , module Yesod
-    , module Foundation
-    , module Settings.StaticFiles
-    , module Settings.Development
-    , module Data.Monoid
-    , module Control.Applicative
-    , Text
-    , greybg
-    , getIpAddr
-    , createIdentifiers
-    , getResponseHeaders
+    ( module Import
     ) where
 
-import Prelude hiding (writeFile, readFile, head, tail, init, last)
-import Yesod   hiding (Route(..))
-import Foundation
-import Data.Monoid (Monoid (mappend, mempty, mconcat))
-import Control.Applicative ((<$>), (<*>), pure)
+import Prelude as Import hiding (writeFile, readFile, head, tail, init, last)
+import Yesod as Import hiding (Route (..))
+import Control.Applicative  as Import (pure, (<$>), (<*>))
+import Data.Monoid as Import (Monoid (mappend, mempty, mconcat), (<>))
+import Data.Text as Import (Text)
+import Foundation as Import
+import Model as Import
+import Settings as Import
+import Settings.Development as Import
+import Settings.StaticFiles as Import
 import Network.Socket (SockAddr (..))
 import System.Random
-import Data.Text (Text, pack, unpack)
+import Data.Text (pack, unpack)
+import Data.Text.Lazy.Builder (fromText)
 import Data.Char
 import Network.HTTP hiding (Request)
 import qualified Network.HTTP as HTTP
@@ -30,11 +25,8 @@ import Network.URI
 import Text.Julius (ToJavascript, toJavascript)
 import Text.Blaze (ToMarkup, toMarkup)
 
-import Settings.StaticFiles
-import Settings.Development
-
 instance ToJavascript Identifier where
-    toJavascript (Identifier t) = toJavascript t
+    toJavascript (Identifier t) = fromText t
 
 instance ToMarkup Identifier where
     toMarkup (Identifier t) = toMarkup t
