@@ -7,6 +7,7 @@
 HomeWelcome: Welcome.
 HomeIntro: RSS Queue lets you quickly and easily create and curate RSS/podcast feeds that can be synchronized to your phone, tablet or computer – making it possible to use your podcast app as a “watch it later” list. No registration is needed.
 
+HomeInstructionsHeader: Easy as 1-2-3:
 HomeInstructions1h: Create a queue
 HomeInstructions1t: No registration is needed. Just give your queue a name (“Funny cat videos”) and note down the address you will be given.
 HomeInstructions2h: Add links

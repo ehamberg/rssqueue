@@ -8,7 +8,7 @@
 <div class="row-fluid">
   <div class="span12">
     <h2 style="text-align: center;">
-      ☆ Easy as 1-2-3:
+      _{MsgHomeInstructionsHeader}
 <div class="row-fluid">
   <div class="instructionsbox span4">
     <h3>1)&nbsp;_{MsgHomeInstructions1h}
