@@ -12,3 +12,5 @@
 /feed/#Identifier                     FeedR             GET
 /about                                AboutR            GET
 /help                                 HelpR             GET
+/touch-icon/#Int                      TouchIconR        GET
+/fav-icon/#Int                        FavIconR          GET

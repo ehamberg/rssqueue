@@ -37,6 +37,8 @@ library
                      Handler.Feed
                      Handler.About
                      Handler.Help
+                     Handler.TouchIcon
+                     Handler.FavIcon
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT

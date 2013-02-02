@@ -14,14 +14,14 @@ $newline never
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link rel="apple-touch-icon-precomposed" href="/static/img/touch-icon-57x57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/img/touch-icon-72x72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/img/touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/img/touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed"                 href=@{TouchIconR 57}/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"   href=@{TouchIconR 72}/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href=@{TouchIconR 114}/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href=@{TouchIconR 144}/>
 
-    <link rel="icon" type="image/png" sizes="128x128" href="/static/img/favicon128.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/static/img/favicon64.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon32.png" />
+    <link rel="icon" type="image/png" sizes="128x128" href=@{FavIconR 128}/>
+    <link rel="icon" type="image/png" sizes="64x64"   href=@{FavIconR 64}/>
+    <link rel="icon" type="image/png" sizes="32x32"   href=@{FavIconR 32}/>
 
     ^{pageHead pc}
 
