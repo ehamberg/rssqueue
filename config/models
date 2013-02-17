@@ -2,6 +2,8 @@ Queue
     identifier       Identifier
     shareId          Identifier
     title            Text
+    created          UTCTime default=NOW()
+    ipAddress        Text default='0.0.0.0'
     public           Bool default=false
     UniqueIdentifier identifier
     UniqueShareId    shareId

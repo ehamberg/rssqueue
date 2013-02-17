@@ -3,6 +3,7 @@ module Handler.New where
 
 import Import
 import Web.Cookie
+import Data.Time.Clock (getCurrentTime)
 
 newtype NewQueueTitle = NewQueueTitle Text deriving Show
 
@@ -30,7 +31,9 @@ postNewR = do
             (secretId,shareId) <- liftIO $ createIdentifiers identifierLength
 
             -- insert into database and redirect to edit page
-            _ <- runDB $ insert $ Queue secretId shareId title False
+            ip <- getIpAddr
+            time <- liftIO getCurrentTime
+            _ <- runDB $ insert $ Queue secretId shareId title time ip False
             setCookie $ parseSetCookie "new = 1; max-age = 1; path = /"
             redirect (EditR secretId)
          -- on errors, simply redirect to “new”
