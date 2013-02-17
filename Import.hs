@@ -19,7 +19,8 @@ import System.Random
 import Data.Text (pack, unpack)
 import Data.Text.Lazy.Builder (fromText)
 import Data.Char
-import Network.HTTP hiding (Request)
+import Network.HTTP hiding (Request, getRequest)
+import Network.Wai (remoteHost)
 import qualified Network.HTTP as HTTP
 import Network.URI
 import Text.Julius (ToJavascript, toJavascript)
@@ -38,10 +39,11 @@ greybg = "rgb(249,249,249)"
 -- Utility functions
 
 -- get an IP address from a socket address as text
-getIpAddr :: SockAddr -> Text
-getIpAddr (SockAddrInet   _ addr)     = (pack . show) addr
-getIpAddr (SockAddrInet6 _ _ addr _ ) = (pack . show) addr
-getIpAddr _                           = pack ""
+getIpAddr :: GHandler s m Text
+getIpAddr = fmap (getAddr . remoteHost . reqWaiRequest) getRequest
+  where getAddr (SockAddrInet   _ addr)     = (pack . show) addr
+        getAddr (SockAddrInet6 _ _ addr _ ) = (pack . show) addr
+        getAddr _                           = pack ""
 
 getResponseHeaders :: Text -> IO (Maybe [HTTP.Header])
 getResponseHeaders url =

@@ -4,7 +4,6 @@ module Handler.Edit where
 
 import Import hiding (length)
 import Data.Time.Clock (getCurrentTime)
-import Network.Wai (remoteHost)
 import Data.Char (isAlphaNum)
 import Data.Maybe (isJust, fromMaybe)
 import Data.Text (isPrefixOf, append, length, head, find, pack)
@@ -71,7 +70,7 @@ postEditR identifier@(Identifier i) = do
                            else "http://" `append` url
 
              time <- liftIO getCurrentTime
-             ip <- fmap (getIpAddr . remoteHost . reqWaiRequest) getRequest
+             ip <- getIpAddr
              item <- runDB $ insert $ QueueItem key title url' time ip Nothing Nothing
 
              -- fork off a thread that sends a HEAD request to get the added
