@@ -9,11 +9,11 @@ HomeIntro: RSS Queue lets you quickly and easily create and curate RSS/podcast f
 
 HomeInstructionsHeader: Easy as 1-2-3:
 HomeInstructions1h: Create a queue
-HomeInstructions1t: No registration is needed. Just give your queue a name (“Funny cat videos”) and note down the address you will be given.
+HomeInstructions1t: No registration is needed. Just give your queue a name (“Funny cat videos”) and note down the address you are given.
 HomeInstructions2h: Add links
 HomeInstructions2t: Populate your new queue with links to videos or audio files you find on the Internet that you wish to watch/listen to later.
 HomeInstructions3h: Synchronize
-HomeInstructions3t: Add the feed to your podcast app and live happily ever after. New items you add later are automatically synced to your phone/tablet.
+HomeInstructions3t: Add the feed to your podcast app. New items you add later are automatically synced to your phone/tablet.
 
 HomeCreateNew: Create a Queue
 
